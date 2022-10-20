@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Homework 1 of Matrix Theory</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="file:////Users/kay/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/mathjax/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none} 
+       
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h2 class="mume-header" id="&#x4E60;&#x9898;&#x4E00;">习题一</h2>
+
+<h3 class="mume-header" id="1">1.</h3>
+
+<p>计算：</p>
+<p>(1)</p>
+<blockquote>
+<p><div class="mathjax-exps">$$&#x5C;begin{pmatrix}&#x5C;cos x &amp; &#x5C;sin x &#x5C;&#x5C;-&#x5C;sin x &amp; &#x5C;cos x &#x5C;&#x5C;&#x5C;end{pmatrix}^n$$</div></p>
+</blockquote>
+<p>令 <span class="mathjax-exps">$R =$</span><span class="mathjax-exps">$&#x5C;begin{pmatrix}&#x5C;cos x &amp; &#x5C;sin x &#x5C;&#x5C;-&#x5C;sin x &amp; &#x5C;cos x &#x5C;&#x5C;&#x5C;end{pmatrix}$</span>，则 <span class="mathjax-exps">$&#x5C;vert R &#x5C;vert = 1$</span> 且 <span class="mathjax-exps">$R$</span> 是一个单位旋转变换，转角为 <span class="mathjax-exps">$x$</span>.</p>
+<p>于是</p>
+<p><div class="mathjax-exps">$$R^n = &#x5C;begin{pmatrix}&#x5C;cos nx &amp; &#x5C;sin nx &#x5C;&#x5C;-&#x5C;sin nx &amp; &#x5C;cos nx &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>(3)</p>
+<blockquote>
+<p><div class="mathjax-exps">$$&#x5C;begin{pmatrix}a &amp; 1 &amp; &#x5C;, &amp; &#x5C;, &amp; &#x5C;, &#x5C;&#x5C;&#x5C;, &amp; a &amp; 1 &amp; &#x5C;, &amp; &#x5C;, &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; a &amp; 1 &amp; &#x5C;, &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; a &amp; 1 &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; a &#x5C;&#x5C;&#x5C;end{pmatrix}^n$$</div></p>
+</blockquote>
+<p>令 <span class="mathjax-exps">$A=aI+J$</span>，其中 <span class="mathjax-exps">$J$</span> 为幂零阵 i.e. <span class="mathjax-exps">$J^n=0，&#x5C;forall n&#x5C;geq 5$</span></p>
+<p><div class="mathjax-exps">$$J = &#x5C;begin{pmatrix}0 &amp; 1 &amp; &#x5C;, &amp; &#x5C;, &amp; &#x5C;, &#x5C;&#x5C;&#x5C;, &amp; 0 &amp; 1 &amp; &#x5C;, &amp; &#x5C;, &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; 0 &amp; 1 &amp; &#x5C;, &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; 0 &amp; 1 &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; 0 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>于是对 <span class="mathjax-exps">$n&#x5C;geq 4$</span>, 我们有</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{align*}A^n &amp;= (aI+J)^n = (aI)^n+C_n^1(aI)^{n-1}J+&#x5C;cdots+C_n^{n-1}(aI)J^{n-1}+J^n &#x5C;&#x5C;&amp;= a^nI+C_n^1a^{n-1}J+C_n^2a^{n-2}J^2+C_n^3a^{n-3}J^3+C_n^4a^{n-4}J^4 &#x5C;&#x5C;&amp;= &#x5C;begin{pmatrix}a^n &amp; C_n^1a^{n-1} &amp; C_n^2a^{n-2} &amp; C_n^3a^{n-3} &amp; C_n^4a^{n-4} &#x5C;&#x5C;&#x5C;, &amp; a^n &amp; C_n^1a^{n-1} &amp; C_n^2a^{n-2} &amp; C_n^3a^{n-3} &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; a^n &amp; C_n^1a^{n-1} &amp; C_n^2a^{n-2} &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; a^n &amp; C_n^1a^{n-1} &#x5C;&#x5C;&#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; &#x5C;, &amp; a^n &#x5C;&#x5C;&#x5C;end{pmatrix}&#x5C;end{align*}$$</div></p>
+<p>其中，定义 <span class="mathjax-exps">$C_n^i=0$</span> 如果 <span class="mathjax-exps">$n&lt;i$</span>.</p>
+<h3 class="mume-header" id="2">2.</h3>
+
+<blockquote>
+<p>证明：与任意 <span class="mathjax-exps">$n$</span> 阶方阵可交换的矩阵必是纯量矩阵 <span class="mathjax-exps">$&#x5C;lambda I$</span>.</p>
+</blockquote>
+<p>记 <span class="mathjax-exps">$A=(a_{ij})=&#x5C;sum&#x5C;limits_{i=1}^n&#x5C;sum&#x5C;limits_{j=1}^n a_{ij}E_{ij}$</span></p>
+<p>由题意 <span class="mathjax-exps">$AE_{ij}=E_{ij}A$</span>，比较两边矩阵元素可得 <span class="mathjax-exps">$a_{ii}=a_{jj}, a_{ij}=0, &#x5C;forall i&#x5C;neq j$</span></p>
+<h3 class="mume-header" id="3">3.</h3>
+
+<blockquote>
+<p>利用初等变换求 <span class="mathjax-exps">$A^{-1}B$</span> 及 <span class="mathjax-exps">$CA^{-1}$</span>, 其中</p>
+<p><div class="mathjax-exps">$$A=&#x5C;begin{pmatrix}4 &amp; 5 &amp; 0 &#x5C;&#x5C;2 &amp; 3 &amp; 1 &#x5C;&#x5C;2 &amp; 7 &amp; -3 &#x5C;&#x5C;&#x5C;end{pmatrix} , B=&#x5C;begin{pmatrix}4 &amp; 5 &amp; 0 &amp; 10 &#x5C;&#x5C;2 &amp; 3 &amp; 1 &amp; -1 &#x5C;&#x5C;2 &amp; 7 &amp; 9 &amp; -3 &#x5C;&#x5C;&#x5C;end{pmatrix} , C=&#x5C;begin{pmatrix}4 &amp; 5 &amp; 0 &#x5C;&#x5C;2 &amp; 3 &amp; 1 &#x5C;&#x5C;2 &amp; 7 &amp; 9 &#x5C;&#x5C;-2 &amp; 3 &amp; 7 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+</blockquote>
+<p>利用矩阵的行列变换可以简化求解</p>
+<p><div class="mathjax-exps">$$(&#x5C;begin{array}{@{}c:c@{}}A &amp; B &#x5C;&#x5C;&#x5C;end{array}) &#x5C;xrightarrow[左乘A^{-1}]{初等行变换} (&#x5C;begin{array}{@{}c:c@{}}I &amp; A^{-1}B &#x5C;&#x5C;&#x5C;end{array})$$</div></p>
+<p><div class="mathjax-exps">$$&#x5C;begin{pmatrix}A &#x5C;&#x5C;  &#x5C;hdashline&#x5C;,C &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;xrightarrow[右乘A^{-1}]{初等列变换}&#x5C;begin{pmatrix}I &#x5C;&#x5C;  &#x5C;hdashline&#x5C;,CA^{-1} &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>结果为</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}A^{-1}B &amp;= &#x5C;begin{pmatrix}1 &amp; 0 &amp; -&#x5C;frac52 &amp; &#x5C;frac{95}{12} &#x5C;&#x5C;0 &amp; 1 &amp; 2 &amp; -&#x5C;frac{13}{3} &#x5C;&#x5C;0 &amp; 0 &amp; 0 &amp; -&#x5C;frac{23}{6} &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;&#x5C;CA^{-1} &amp;= &#x5C;begin{pmatrix}1 &amp; 0 &amp; 0 &#x5C;&#x5C;0 &amp; 1 &amp; 0 &#x5C;&#x5C;-4 &amp; 9 &amp; 0 &#x5C;&#x5C;-&#x5C;frac{14}{3} &amp; 8 &amp; &#x5C;frac13 &#x5C;&#x5C;&#x5C;end{pmatrix}&#x5C;end{split}$$</div></p>
+<h3 class="mume-header" id="5">5.</h3>
+
+<blockquote>
+<p>证明：对任意矩阵 <span class="mathjax-exps">$A$</span>, 有 <span class="mathjax-exps">$r(A^*A) = r(AA^*) = r(A)$</span>.</p>
+</blockquote>
+<p>记 <span class="mathjax-exps">$N(A)$</span> 为 <span class="mathjax-exps">$AX=0$</span> 的解空间。欲证 <span class="mathjax-exps">$r(A&#x27;A)=r(A)$</span> 只需证<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> <span class="mathjax-exps">$&#x5C;dim N(A&#x27;A)=&#x5C;dim N(A)$</span></p>
+<p>显然 <span class="mathjax-exps">$&#x5C;dim N(A&#x27;A) &#x5C;geq &#x5C;dim N(A)$</span>，这是因为 <span class="mathjax-exps">$AX=0$</span> 的解均为 <span class="mathjax-exps">$A&#x27;AX=0$</span> 的解.</p>
+<p>又当 <span class="mathjax-exps">$A&#x27;AX=0$</span> 时，<span class="mathjax-exps">$X&#x27;A&#x27;AX=(AX)&#x27;(AX)=0$</span> 则 <span class="mathjax-exps">$AX=0$</span></p>
+<p>从而 <span class="mathjax-exps">$&#x5C;dim N(A&#x27;A)&#x5C;leq&#x5C;dim N(A)$</span></p>
+<h3 class="mume-header" id="7">7.</h3>
+
+<blockquote>
+<p>设 <span class="mathjax-exps">$&#x5C;omega$</span> 是 <span class="mathjax-exps">$n$</span> 次本原单位根 (可设 <span class="mathjax-exps">$&#x5C;omega=&#x5C;mathrm{e}^{2&#x5C;pi i&#x2F;n}=&#x5C;cos&#x5C;frac{2&#x5C;pi}{n}+i&#x5C;sin&#x5C;frac{2&#x5C;pi}{n}$</span> )，试求Fourier<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>矩阵</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{pmatrix}1 &amp; 1 &amp; 1 &amp; &#x5C;cdots &amp; 1 &#x5C;&#x5C;1 &amp; &#x5C;omega &amp; &#x5C;omega^2 &amp; &#x5C;cdots &amp; &#x5C;omega^{n-1} &#x5C;&#x5C;1 &amp; &#x5C;omega^2 &amp; &#x5C;omega^4 &amp; &#x5C;cdots &amp; &#x5C;omega^{2(n-1)} &#x5C;&#x5C;1 &amp; &#x5C;vdots &amp; &#x5C;vdots &amp; &#x5C;, &amp; &#x5C;vdots &#x5C;&#x5C;1 &amp; &#x5C;omega^{n-1} &amp; &#x5C;omega^{2(n-1)} &amp; &#x5C;cdots &amp; &#x5C;omega^{(n-1)&#x5C;times(n-1)} &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div><br>
+的逆矩阵.</p>
+</blockquote>
+<p>由本原单位根的性质<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>，知 <span class="mathjax-exps">$&#x5C;forall j = 0, 1, 2, &#x5C;cdots, n-1$</span></p>
+<p><div class="mathjax-exps">$$(&#x5C;omega^j)^0 + (&#x5C;omega^j)^1 + &#x5C;cdots + (&#x5C;omega^j)^{n-1} = 0 &#x5C;quad &#x5C;omega^j &#x5C;cdot &#x5C;bar{&#x5C;omega}^j = 1$$</div></p>
+<p>现记 <span class="mathjax-exps">$F$</span> 中第 <span class="mathjax-exps">$i$</span> 行为 <span class="mathjax-exps">$&#x5C;alpha_{i+1}=(1, &#x5C;omega^i, &#x5C;omega^{2i}, &#x5C;cdot, &#x5C;omega^{(n-1)i})$</span>, 其中 <span class="mathjax-exps">$i=0,1,&#x5C;cdots, n-1$</span> 则有</p>
+<p><div class="mathjax-exps">$$&#x5C;alpha_{i+1}&#x5C;bar{&#x5C;alpha_{j+1}}&#x27; = 1 + &#x5C;omega^i&#x5C;bar{&#x5C;omega}^j + &#x5C;cdot + &#x5C;omega^{(n-1)i}&#x5C;cdot&#x5C;bar{&#x5C;omega}^{(n-1)j} = &#x5C;begin{cases}n &amp; i=j &#x5C;&#x5C;0 &amp; i&#x5C;neq j &#x5C;&#x5C;&#x5C;end{cases}$$</div></p>
+<p>故 <span class="mathjax-exps">$F&#x5C;cdot &#x5C;bar{F}&#x27; = nI$</span></p>
+<p>即</p>
+<p><div class="mathjax-exps">$$F^{-1} = &#x5C;frac1n &#x5C;bar{F}&#x27; = &#x5C;frac1n &#x5C;begin{pmatrix}1 &amp; 1 &amp; 1 &amp; &#x5C;cdots &amp; &#x5C;cdots &amp; 1 &#x5C;&#x5C;1 &amp; &#x5C;bar{&#x5C;omega} &amp; &#x5C;bar{&#x5C;omega}^2 &amp; &#x5C;cdots &amp; &#x5C;cdots &amp; 1 &#x5C;&#x5C;1 &amp; &#x5C;bar{&#x5C;omega}^2 &amp; &#x5C;bar{&#x5C;omega}^4 &amp; &#x5C;cdots &amp; &#x5C;cdots &amp; &#x5C;bar{&#x5C;omega}^{2(n-1)} &#x5C;&#x5C;&#x5C;vdots &amp; &#x5C;vdots &amp; &#x5C;vdots &amp; &amp; &amp; &#x5C;vdots &#x5C;&#x5C;&#x5C;vdots &amp; &#x5C;vdots &amp; &#x5C;vdots &amp; &amp; &amp; &#x5C;vdots &#x5C;&#x5C;1 &amp; &#x5C;bar{&#x5C;omega}^{n-1} &amp; &#x5C;bar{&#x5C;omega}^{2(n-1)} &amp; &#x5C;cdots &amp; &#x5C;cdots &amp; &#x5C;bar{&#x5C;omega}^{(n-1)&#x5C;times (n-1)} &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<h3 class="mume-header" id="13">13.</h3>
+
+<blockquote>
+<p>设 <span class="mathjax-exps">$n$</span> 阶矩阵 <span class="mathjax-exps">$A$</span> 可逆，<span class="mathjax-exps">$B,C,D$</span> 分别是 <span class="mathjax-exps">$n&#x5C;times m, m&#x5C;times n, m&#x5C;times m$</span> 矩阵. 证明</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{vmatrix}A &amp; B &#x5C;&#x5C;C &amp; D &#x5C;&#x5C;&#x5C;end{vmatrix} = &#x5C;begin{vmatrix}A&#x5C;end{vmatrix} &#x5C;cdot &#x5C;begin{vmatrix}D - C A^{-1} B&#x5C;end{vmatrix}$$</div></p>
+</blockquote>
+<p>在增广矩阵上作初等变换</p>
+<p><div class="mathjax-exps">$$&#x5C;left( &#x5C;begin{array}{@{}cc:cc@{}}A &amp; B &amp; I &amp; 0 &#x5C;&#x5C;C &amp; D &amp; 0 &amp; I &#x5C;&#x5C;&#x5C;end{array} &#x5C;right) &#x5C;xrightarrow{-CA^{-1}&#x5C;times r(1)+r(2)} &#x5C;left( &#x5C;begin{array}{@{}cc:cc@{}}A &amp; B &amp; I &amp; 0 &#x5C;&#x5C;0 &amp; D-CA^{-1}B &amp; -CA^{-1} &amp; I &#x5C;&#x5C;&#x5C;end{array} &#x5C;right)$$</div></p>
+<p>等价于</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{pmatrix}I &amp; 0 &#x5C;&#x5C;-CA^{-1} &amp; I &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;begin{pmatrix}A &amp; B &#x5C;&#x5C;C &amp; D &#x5C;&#x5C;&#x5C;end{pmatrix} = &#x5C;begin{pmatrix}A &amp; B &#x5C;&#x5C;0 &amp; D-CA^{-1}B &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>两边取行列式即得.</p>
+<h3 class="mume-header" id="14">14.</h3>
+
+<p>(1)</p>
+<blockquote>
+<p>设矩阵 <span class="mathjax-exps">$A,C$</span> 均可逆，求分块矩阵 <span class="mathjax-exps">$&#x5C;left(&#x5C;begin{smallmatrix} A &amp; B &#x5C;&#x5C; C &amp; D &#x5C;&#x5C; &#x5C;end{smallmatrix}&#x5C;right)$</span> 的逆矩阵.</p>
+</blockquote>
+<p><div class="mathjax-exps">$$&#x5C;left(&#x5C;begin{array}{@{}cc:cc@{}}A &amp; B &amp; I &amp; 0 &#x5C;&#x5C;0 &amp; C &amp; 0 &amp; I &#x5C;&#x5C;&#x5C;end{array}&#x5C;right) &#x5C;xrightarrow[C^{-1}&#x5C;times r(2)]{A^{-1}&#x5C;times r(1)} &#x5C;left(&#x5C;begin{array}{@{}cc:cc@{}}I &amp; A^{-1}B &amp; A^{-1} &amp; 0 &#x5C;&#x5C;0 &amp; I &amp; 0 &amp; C^{-1} &#x5C;&#x5C;&#x5C;end{array}&#x5C;right) &#x5C;xrightarrow{-A^{-1}B&#x5C;times r(2)+r(1)} &#x5C;left(&#x5C;begin{array}{@{}cc:cc@{}}I &amp; 0 &amp; A^{-1} &amp; -A^{-1}BC^{-1} &#x5C;&#x5C;0 &amp; I &amp; 0 &amp; C^{-1} &#x5C;&#x5C;&#x5C;end{array}&#x5C;right)$$</div></p>
+<p>于是</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{pmatrix}A &amp; B &#x5C;&#x5C;0 &amp; C &#x5C;&#x5C;&#x5C;end{pmatrix}^{-1} = &#x5C;begin{pmatrix}A^{-1} &amp; -A^{-1}BC^{-1} &#x5C;&#x5C;0 &amp; C^{-1} &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>(2)</p>
+<blockquote>
+<p>设矩阵 <span class="mathjax-exps">$A$</span> 可逆，<span class="mathjax-exps">$D-CA^{-1}B$</span> 也可逆，证明矩阵 <span class="mathjax-exps">$&#x5C;left( &#x5C;begin{smallmatrix} A &amp; B &#x5C;&#x5C; C &amp; D &#x5C;&#x5C; &#x5C;end{smallmatrix} &#x5C;right)$</span> 也可逆并求其逆.</p>
+</blockquote>
+<p>结合<a href="###13.">13</a> 和 (1) 中结论，可设 <span class="mathjax-exps">$F=D-CA^{-1}B$</span></p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}&#x5C;begin{pmatrix}A &amp; B &#x5C;&#x5C;C &amp; D &#x5C;&#x5C;&#x5C;end{pmatrix}^{-1} &amp;= &#x5C;begin{pmatrix}A &amp; B &#x5C;&#x5C;0 &amp; F &#x5C;&#x5C;&#x5C;end{pmatrix}^{-1} &#x5C;begin{pmatrix}I &amp; 0 &#x5C;&#x5C;-CA^{-1} &amp; I &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;&#x5C;&amp;= &#x5C;begin{pmatrix}A^{-1} &amp; -A^{-1}BF^{-1} &#x5C;&#x5C;0 &amp; F^{-1} &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;begin{pmatrix}I &amp; 0 &#x5C;&#x5C;-CA^{-1} &amp; I &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;&#x5C;&amp;= &#x5C;begin{pmatrix}A^{-1}+A^{-1}BF^{-1}CA^{-1} &amp; -A^{-1}BF^{-1} &#x5C;&#x5C;-F^{-1}CA^{-1} &amp; F^{-1} &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<h3 class="mume-header" id="17">17.</h3>
+
+<blockquote>
+<p>求下列各矩阵的满秩分解：<br>
+<div class="mathjax-exps">$$A=&#x5C;begin{pmatrix}1 &amp; 2 &amp; 3 &amp; 0 &#x5C;&#x5C;0 &amp; 2 &amp; 1 &amp; -1 &#x5C;&#x5C;1 &amp; 0 &amp; 2 &amp; 1 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+</blockquote>
+<p><div class="mathjax-exps">$$&#x5C;begin{pmatrix}1 &amp; 2 &amp; 3 &amp; 0 &#x5C;&#x5C;0 &amp; 2 &amp; 1 &amp; -1 &#x5C;&#x5C;1 &amp; 0 &amp; 2 &amp; 1 &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;xrightarrow{初等行变换} &#x5C;begin{pmatrix}1 &amp; 2 &amp; 3 &amp; 0 &#x5C;&#x5C;0 &amp; 2 &amp; 1 &amp; -1 &#x5C;&#x5C;0 &amp; 0 &amp; 0 &amp; 0 &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;xrightarrow{标准化}&#x5C;begin{pmatrix}1 &amp; 0 &amp; 2 &amp; 1 &#x5C;&#x5C;0 &amp; 1 &amp; &#x5C;frac12 &amp; -&#x5C;frac12 &#x5C;&#x5C; &#x5C;hdashline0 &amp; 0 &amp; 0 &amp; 0 &#x5C;&#x5C;&#x5C;end{pmatrix} := H$$</div></p>
+<p>从而</p>
+<p><div class="mathjax-exps">$$A = (a_1, a_2)&#x5C;begin{pmatrix}H_1 &#x5C;&#x5C;H_2 &#x5C;&#x5C;&#x5C;end{pmatrix} = &#x5C;begin{pmatrix}1 &amp; 2 &#x5C;&#x5C;0 &amp; 2 &#x5C;&#x5C;1 &amp; 0 &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;begin{pmatrix}1 &amp; 0 &amp; 2 &amp; 1 &#x5C;&#x5C;0 &amp; 1 &amp; &#x5C;frac12 &amp; -&#x5C;frac12 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<h3 class="mume-header" id="21">21.</h3>
+
+<blockquote>
+<p>证明例1.4.2<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>中的 <span class="mathjax-exps">$(V,&#x5C;oplus,&#x5C;cdot)$</span> 是 <span class="mathjax-exps">$&#x5C;mathbb{R}$</span> 上的线性空间.</p>
+</blockquote>
+<ul>
+<li>(C) <strong>封闭性</strong>： <span class="mathjax-exps">$&#x5C;forall x,y&#x5C;in V$</span>，<span class="mathjax-exps">$x&#x5C;oplus y&#x5C;in V$</span></li>
+<li>(A1) <strong>结合律</strong>： <span class="mathjax-exps">$&#x5C;forall x,y,z &#x5C;in V$</span>，<span class="mathjax-exps">$(x&#x5C;oplus y)&#x5C;oplus z=xyz=x&#x5C;oplus (y&#x5C;oplus z)$</span></li>
+<li>(A2) <strong>交换律</strong>： <span class="mathjax-exps">$&#x5C;forall x,y&#x5C;in V$</span>，<span class="mathjax-exps">$x&#x5C;oplus y=xy=y&#x5C;oplus x$</span></li>
+<li>(A3) 存在<strong>零向量</strong>：存在 <span class="mathjax-exps">$1&#x5C;in V$</span>，使得 <span class="mathjax-exps">$&#x5C;forall x&#x5C;in V$</span>，<span class="mathjax-exps">$x&#x5C;oplus 1=x&#x5C;cdot 1=x$</span></li>
+<li>(A4) 存在<strong>负向量</strong>：<span class="mathjax-exps">$&#x5C;forall x&#x5C;in V$</span>，存在 <span class="mathjax-exps">$x^{-1}&#x5C;in V$</span> 使得 <span class="mathjax-exps">$x&#x5C;oplus x^{-1}=x&#x5C;cdot x^{-1}=1$</span></li>
+<li>(B1) 数乘的结合律：设 <span class="mathjax-exps">$x&#x5C;in V$</span>，<span class="mathjax-exps">$a, b&#x5C;in F$</span> 有<br>
+<div class="mathjax-exps">$$a&#x5C;cdot(b&#x5C;cdot x)=a&#x5C;cdot x^b=x^{ab}=(ab)&#x5C;cdot x$$</div></li>
+<li>(B2) 数乘关于向量加法的分配律： 设 <span class="mathjax-exps">$x,y&#x5C;in V$</span>，<span class="mathjax-exps">$k&#x5C;in F$</span> 有<br>
+<div class="mathjax-exps">$$k&#x5C;cdot(x&#x5C;oplus y)=(xy)^k=x^k y^k=x^k&#x5C;oplus y^k=k&#x5C;cdot x&#x5C;oplus k&#x5C;cdot y$$</div></li>
+<li>(B3) 数乘关于数的加法分配律：设 <span class="mathjax-exps">$x&#x5C;in V$</span>，<span class="mathjax-exps">$a,b&#x5C;in F$</span> 有<br>
+<div class="mathjax-exps">$$(a+b)&#x5C;cdot x = x^{a+b} = x^a&#x5C;cdot x^b = x^a &#x5C;oplus x^b = a&#x5C;cdot x &#x5C;oplus b&#x5C;cdot x$$</div></li>
+<li>(B4) 数乘初始条件：存在单位元&quot;1&quot;，使得 <span class="mathjax-exps">$1&#x5C;cdot x = x^1 = x$</span>，其中 <span class="mathjax-exps">$1&#x5C;in F$</span></li>
+</ul>
+<h3 class="mume-header" id="28">28.</h3>
+
+<blockquote>
+<p>证明 <span class="mathjax-exps">$1, x-1, (x-1)^2, &#x5C;cdots, (x-1)^n$</span> 是 <span class="mathjax-exps">$&#x5C;mathbb{R}[x]_{n+1}$</span> 上的一组基，并求多项式 <span class="mathjax-exps">$f(x)=a_0 + a_1 x + a_2 x^2 + &#x5C;cdots + a_n x^n$</span>在该组基下的坐标.</p>
+</blockquote>
+<p>先证 <span class="mathjax-exps">$1, x-1, (x-1)^2, &#x5C;cdots, (x-1)^n$</span> 线性无关.</p>
+<p>若存在不全为0的 <span class="mathjax-exps">$k_0, k_1, &#x5C;cdots, k_n$</span> 使得</p>
+<p><div class="mathjax-exps">$$f(x)=k_0 &#x5C;cdot 1+k_1&#x5C;cdot (x-1)+&#x5C;cdots+k_n&#x5C;cdot(x-1)^n$$</div></p>
+<p>令 <span class="mathjax-exps">$x&#x5C;to&#x5C;infty$</span>，可知最高项系数 <span class="mathjax-exps">$k_n=0$</span>，依次下去得到 <span class="mathjax-exps">$k_{n-1}=&#x5C;cdots=k_1=k_0=0$</span> 矛盾！</p>
+<p>由泰勒展式</p>
+<p><div class="mathjax-exps">$$f(x)=a_0+a_1 x+&#x5C;cdots+a_n x^n = &#x5C;sum&#x5C;limits_{k=0}^n &#x5C;frac{f^{(n)}(1)}{k!} (x-1)^k$$</div></p>
+<p>得到基坐标为</p>
+<p><div class="mathjax-exps">$$&#x5C;left( f(1), f&#x27;(1), &#x5C;frac{f&#x27;&#x27;(1)}{2!}, &#x5C;cdots, &#x5C;frac{f^{(n)}(1)}{n!} &#x5C;right)$$</div></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>这是因为 <span class="mathjax-exps">$&#x5C;dim N(A)= n - r(A)$</span> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Joseph Fourier (1768-1830), 法国著名数学家与物理学家，发现了三角级数、Fourier变换、热传导方程、热传导定律和温室效应. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>本原单位根共轭分布于单位圆上 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p><span class="mathjax-exps">$V=&#x5C;lbrace&#x5C;text{所有正实数}&#x5C;rbrace$</span>, <span class="mathjax-exps">$F=&#x5C;mathbb{R}$</span>, <span class="mathjax-exps">$x&#x5C;oplus y = xy$</span>, <span class="mathjax-exps">$k&#x5C;cdot x = x^k &#x5C;quad &#x5C;forall k &#x5C;in F, x,y &#x5C;in V$</span> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#%E4%B9%A0%E9%A2%98%E4%B8%80">习题一</a>
+<ul>
+<li><a href="#1">1.</a></li>
+<li><a href="#2">2.</a></li>
+<li><a href="#3">3.</a></li>
+<li><a href="#5">5.</a></li>
+<li><a href="#7">7.</a></li>
+<li><a href="#13">13.</a></li>
+<li><a href="#14">14.</a></li>
+<li><a href="#17">17.</a></li>
+<li><a href="#21">21.</a></li>
+<li><a href="#28">28.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    </body>
+    
+    
+    
+    <script>
+(function bindTaskListEvent() {
+  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
+  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
+    var checkbox = taskListItemCheckboxes[i]
+    var li = checkbox.parentElement
+    if (li.tagName !== 'LI') li = li.parentElement
+    if (li.tagName === 'LI') {
+      li.classList.add('task-list-item')
+    }
+  }
+}())    
+</script>
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  </html>
