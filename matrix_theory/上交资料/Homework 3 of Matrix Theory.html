@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Homework 3 of Matrix Theory</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="file:////Users/kay/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/mathjax/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h2 class="mume-header" id="&#x4E60;&#x9898;&#x4E00;">习题一</h2>
+
+<h3 class="mume-header" id="32">32.</h3>
+
+<blockquote>
+<p>设欧式空间 <span class="mathjax-exps">$&#x5C;mathbb{R}[x]_2$</span> 中的內积为</p>
+<p><div class="mathjax-exps">$$(f,g) = &#x5C;int_{-1}^{1} f(x)g(x)dx$$</div><br>
+(1) 求基 <span class="mathjax-exps">$1,t,t^2$</span> 的度量矩阵<br>
+(2) 用矩阵乘法形式计算 <span class="mathjax-exps">$f(x) = 1-x+x^2$</span> 与 <span class="mathjax-exps">$g(x)=1-4x-5x^2$</span> 的內积.</p>
+</blockquote>
+<p>(1)</p>
+<p>由 <span class="mathjax-exps">$(f, g) = &#x5C;int_{-1}^{1} f(x)g(x) dx$</span> 定义计算得</p>
+<p><div class="mathjax-exps">$$G = &#x5C;begin{pmatrix}2 &amp; 0 &amp; &#x5C;frac23 &#x5C;&#x5C;0 &amp; &#x5C;frac23 &amp; 0 &#x5C;&#x5C;&#x5C;frac23 &amp; 0 &amp; &#x5C;frac25 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>(2)</p>
+<p><div class="mathjax-exps">$$(f(x), g(x)) = ((1, t, t^2)&#x5C;begin{pmatrix} 1 &#x5C;&#x5C; -1 &#x5C;&#x5C; 1 &#x5C;&#x5C; &#x5C;end{pmatrix}, (1, t, t^2)&#x5C;begin{pmatrix} 1 &#x5C;&#x5C; -4 &#x5C;&#x5C; -5 &#x5C;&#x5C; &#x5C;end{pmatrix}) = (1, -4, -5)G&#x5C;begin{pmatrix} 1&#x5C;&#x5C; -1&#x5C;&#x5C; 1&#x5C;&#x5C; &#x5C;end{pmatrix}$$</div></p>
+<h3 class="mume-header" id="34">34.</h3>
+
+<blockquote>
+<p>(1) 复数域 <span class="mathjax-exps">$&#x5C;mathbb{C}$</span> 是实数域 <span class="mathjax-exps">$&#x5C;mathbb{R}$</span> 上的二维线性空间. 是否存在 <span class="mathjax-exps">$&#x5C;mathbb{C}$</span> 上的一个內积，使得 <span class="mathjax-exps">$i$</span> 与 <span class="mathjax-exps">$1+i$</span> 成为 <span class="mathjax-exps">$&#x5C;mathbb{C}$</span> 的一组标准正交基，为什么？</p>
+<p>(2) 试构造实线性空间 <span class="mathjax-exps">$&#x5C;mathbb{R}^3$</span> 上的一个內积，使得向量组 <span class="mathjax-exps">$e_1, e_1+e_2, e_1+e_2+e_3$</span> 是一组标准正交基. 问此时 <span class="mathjax-exps">$e_2$</span> 与 <span class="mathjax-exps">$e_3$</span> 的长度是多少？它们的夹角又是多少？</p>
+</blockquote>
+<p>(1) 存在。因为 <span class="mathjax-exps">$&#x5C;mathrm{i}$</span> 和 <span class="mathjax-exps">$&#x5C;mathrm{i} + 1$</span> 线性无关，可以作为二维线性空间的一组基。然后用 Gram_Schmidt 正交化方法将其变为一组标准正交基。</p>
+<p>(2) 若 <span class="mathjax-exps">$e_1, e_1+e_2, e_1+e_2+e_3$</span> 是一组标准正交基，利用內积性质可计算得度量矩阵</p>
+<p><div class="mathjax-exps">$$A = &#x5C;begin{pmatrix}1 &amp; -1 &amp; 0 &#x5C;&#x5C;-1 &amp; 2 &amp; -1 &#x5C;&#x5C;0 &amp; -1 &amp; 2 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>i.e. 若 <span class="mathjax-exps">$&#x5C;alpha, &#x5C;beta$</span> 在 <span class="mathjax-exps">$e_1, e_2, e_3$</span> 这组基下坐标为 <span class="mathjax-exps">$(x_1, x_2, x_3)&#x27;$</span> 和 <span class="mathjax-exps">$(y_1, y_2, y_3)&#x27;$</span>，则有</p>
+<p><div class="mathjax-exps">$$(&#x5C;alpha, &#x5C;beta) = (y_1, y_2, y_3)A(x_1, x_2, x_3)&#x27; = x_1y_1 + 2x_2y_2 + 2x_3y_3 - (x_1y_2 + x_2y_1 + x_2y_3 + x_3y_2)$$</div></p>
+<p>且 <span class="mathjax-exps">$&#x5C;Vert e_2 &#x5C;Vert = &#x5C;sqrt2, &#x5C;Vert e_3 &#x5C;Vert = &#x5C;sqrt2$</span>，得 <span class="mathjax-exps">$&#x5C;cos (e_2, e_3) = &#x5C;frac{(e_2, e_3)}{&#x5C;Vert e_2 &#x5C;Vert &#x5C;cdot &#x5C;Vert e_3 &#x5C;Vert} = -&#x5C;frac12$</span> 即 <span class="mathjax-exps">$&#x5C;langle e_2, e_3 &#x5C;rangle = &#x5C;frac23 &#x5C;pi$</span></p>
+<h3 class="mume-header" id="37">37.</h3>
+
+<blockquote>
+<p>在欧式空间 <span class="mathjax-exps">$&#x5C;mathbb{R}^4$</span> 中，求三个向量 <span class="mathjax-exps">$&#x5C;alpha_1 =(1, 0, 1, 1)&#x27;, &#x5C;alpha_2 =(2, 1, 0, -3)&#x27;$</span> 和 <span class="mathjax-exps">$&#x5C;alpha_3 =(1, -1, 1, -1)&#x27;$</span> 所生成的子空间的一个标准正交基.</p>
+</blockquote>
+<p>直接用 Gram-Schmidt 方法求解</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}&amp;&#x5C;beta_1 = &#x5C;alpha_1 = (1, 0, 1, 1)&#x27; &amp;&#x5C;qquad r_1 = &#x5C;beta_1&#x2F;&#x5C;Vert &#x5C;beta_1 &#x5C;Vert = &#x5C;frac{1}{&#x5C;sqrt3}(1, 0, 1, 1)&#x27; &#x5C;&#x5C;&amp;&#x5C;beta_2 = &#x5C;alpha_2 - (&#x5C;alpha_2, r_1)r_1 = &#x5C;frac13(7, 3, 1, -8)&#x27; &amp;&#x5C;qquad r_2 = &#x5C;beta_2&#x2F;&#x5C;Vert &#x5C;beta_2 &#x5C;Vert = &#x5C;frac{1}{&#x5C;sqrt{123}}(7, 3, 1, -8)&#x27; &#x5C;&#x5C;&amp;&#x5C;beta_3 = &#x5C;alpha_3 - (&#x5C;alpha_3, r_2)r_2 - (&#x5C;alpha_3, r_1)r_1 = &#x5C;frac14(-3, -54, 23, -20)&#x27; &amp;&#x5C;qquad r_3 = &#x5C;beta_3&#x2F;&#x5C;Vert &#x5C;beta_3 &#x5C;Vert = &#x5C;frac{1}{&#x5C;sqrt{3854}}(-3, -54, 23, -20)&#x27; &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<h3 class="mume-header" id="39">39.</h3>
+
+<blockquote>
+<p>设二维欧式空间 <span class="mathjax-exps">$V$</span> 的一组基为 <span class="mathjax-exps">$&#x5C;alpha_1, &#x5C;alpha_2$</span>，其度量矩阵为<br>
+<div class="mathjax-exps">$$A = &#x5C;begin{pmatrix}5 &amp; 4 &#x5C;&#x5C;4 &amp; 5 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div><br>
+试求 <span class="mathjax-exps">$V$</span> 的一个标准正交基到 <span class="mathjax-exps">$&#x5C;alpha_1, &#x5C;alpha_2$</span> 的过渡矩阵.</p>
+</blockquote>
+<p>由度量矩阵可知 <span class="mathjax-exps">$(&#x5C;alpha_1, &#x5C;alpha_1) = (&#x5C;alpha_2, &#x5C;alpha_2) = 5$</span> 故 <span class="mathjax-exps">$&#x5C;alpha_1, &#x5C;alpha_2$</span> 长度相等，则 <span class="mathjax-exps">$&#x5C;beta_1 = &#x5C;alpha_1 + &#x5C;alpha_2, &#x5C;beta_2 = &#x5C;alpha_1 - &#x5C;alpha_2$</span> 必正交。令</p>
+<p><div class="mathjax-exps">$$r_1 = &#x5C;frac{&#x5C;beta_1}{&#x5C;Vert &#x5C;beta_1 &#x5C;Vert} = &#x5C;frac{1}{&#x5C;sqrt{18}}(&#x5C;alpha_1 + &#x5C;alpha_2) &#x5C;quad r_2 = &#x5C;frac{&#x5C;beta_2}{&#x5C;Vert &#x5C;beta_2 &#x5C;Vert} = &#x5C;frac{1}{&#x5C;sqrt{2}}(&#x5C;alpha_1 - &#x5C;alpha_2)$$</div></p>
+<p>则 <span class="mathjax-exps">$r_1, r_2$</span> 是一个标准正交基，且有</p>
+<p><div class="mathjax-exps">$$(r_1, r_2) = (&#x5C;alpha_1, &#x5C;alpha_2)&#x5C;begin{pmatrix}&#x5C;frac{1}{&#x5C;sqrt{18}} &amp; &#x5C;frac{1}{&#x5C;sqrt{2}} &#x5C;&#x5C;&#x5C;frac{1}{&#x5C;sqrt{18}} &amp; -&#x5C;frac{1}{&#x5C;sqrt{2}} &#x5C;&#x5C;&#x5C;end{pmatrix} := (&#x5C;alpha_1, &#x5C;alpha_2)&#x5C;cdot P$$</div></p>
+<p>则 <span class="mathjax-exps">$r_1, r_2$</span> 到 <span class="mathjax-exps">$&#x5C;alpha_1, &#x5C;alpha_2$</span> 的过渡矩阵为</p>
+<p><div class="mathjax-exps">$$P^{-1} = &#x5C;begin{pmatrix}&#x5C;frac{3}{&#x5C;sqrt2} &amp; &#x5C;frac{3}{&#x5C;sqrt2} &#x5C;&#x5C;&#x5C;frac{1}{&#x5C;sqrt2} &amp; -&#x5C;frac{1}{&#x5C;sqrt2} &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<h3 class="mume-header" id="42">42.</h3>
+
+<blockquote>
+<p>设线性空间 <span class="mathjax-exps">$V = &#x5C;mathbb{R}^2$</span> 是欧式空间 (未必是通常的欧式空间). 设 <span class="mathjax-exps">$&#x5C;alpha_1 = (1, 1)&#x27;, &#x5C;alpha_2 = (1, -1)&#x27;$</span> 与 <span class="mathjax-exps">$&#x5C;beta_1 = (0, 2)&#x27;, &#x5C;beta_2 = (6, 12)&#x27;$</span> 是 <span class="mathjax-exps">$V$</span> 的两组基. 设 <span class="mathjax-exps">$&#x5C;alpha_j$</span> 与 <span class="mathjax-exps">$&#x5C;beta_k$</span> 的內积分别为<br>
+<div class="mathjax-exps">$$(&#x5C;alpha_1, &#x5C;beta_1) = 1, (&#x5C;alpha_1, &#x5C;beta_2) = 15, (&#x5C;alpha_2, &#x5C;beta_1) = -1, (&#x5C;alpha_2, &#x5C;beta_2) = 3$$</div><br>
+(1) 求两组基的度量矩阵<br>
+(2) 求 <span class="mathjax-exps">$V$</span> 的一个标准正交基.</p>
+</blockquote>
+<p>(1)</p>
+<p>易知 <span class="mathjax-exps">$&#x5C;beta_1 = &#x5C;alpha_1 - &#x5C;alpha_2, &#x5C;beta_2 = 9&#x5C;alpha_1 - 3&#x5C;alpha_2$</span></p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}(&#x5C;alpha_1, &#x5C;beta_1) &amp;= (&#x5C;alpha_1, &#x5C;alpha_1-&#x5C;alpha_2) = (&#x5C;alpha_1, &#x5C;alpha_1) - (&#x5C;alpha_1, &#x5C;alpha_2) = 1 &#x5C;&#x5C;(&#x5C;alpha_1, &#x5C;beta_2) &amp;= (&#x5C;alpha_1, 9&#x5C;alpha_1-3&#x5C;alpha_2) = 9(&#x5C;alpha_1, &#x5C;alpha_1) - 3(&#x5C;alpha_1 - &#x5C;alpha_2) = 15 &#x5C;&#x5C;(&#x5C;alpha_2, &#x5C;beta_1) &amp;= (&#x5C;alpha_2, &#x5C;alpha_1-&#x5C;alpha_2) = (&#x5C;alpha_2, &#x5C;alpha_1) - (&#x5C;alpha_2, &#x5C;alpha_2) = -1 &#x5C;&#x5C;(&#x5C;beta_1, &#x5C;beta_1) &amp;= (&#x5C;alpha_1-&#x5C;alpha_2, &#x5C;alpha_1-&#x5C;alpha_2) = 2 &#x5C;&#x5C;(&#x5C;beta_1, &#x5C;beta_2) &amp;= (&#x5C;alpha_1-&#x5C;alpha_2, 9&#x5C;alpha_1-3&#x5C;alpha_2) = 12 &#x5C;&#x5C;(&#x5C;beta_2, &#x5C;beta_2) &amp;= (9&#x5C;alpha_1 - 3&#x5C;alpha_2, 9&#x5C;alpha_1 - 3&#x5C;alpha_2) = 126 &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<p>可以推出</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}&amp;(&#x5C;alpha_1, &#x5C;alpha_1) = 2 &#x5C;quad (&#x5C;alpha_1, &#x5C;alpha_2) = 1 &#x5C;&#x5C;&amp;(&#x5C;alpha_2, &#x5C;alpha_2) = (&#x5C;alpha_2, &#x5C;alpha_1) + 1 = 2 &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<p>从而度量矩阵</p>
+<p><div class="mathjax-exps">$$A = &#x5C;begin{pmatrix}2 &amp; 1 &#x5C;&#x5C;1 &amp; 2 &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;quad B = &#x5C;begin{pmatrix}2 &amp; 12 &#x5C;&#x5C;12 &amp; 126 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>(2)</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}&amp;r_1 = &#x5C;frac{&#x5C;alpha_1}{&#x5C;Vert &#x5C;alpha_1 &#x5C;Vert} = &#x5C;frac{1}{&#x5C;sqrt2}&#x5C;alpha_1 &amp;&#x5C;quad r_2 = &#x5C;frac{1}{&#x5C;Vert &#x5C;beta_2 &#x5C;Vert}&#x5C;cdot&#x5C;beta_2 = &#x5C;frac{2}{&#x5C;sqrt6}&#x5C;alpha_2 - &#x5C;frac{1}{&#x5C;sqrt6}&#x5C;alpha_1 &#x5C;&#x5C;&amp;&#x5C;beta_2 = &#x5C;alpha_2 - (&#x5C;alpha_2, r_1)r_1 = &#x5C;alpha_2 - &#x5C;frac12 &#x5C;alpha_1 &amp;&#x5C;quad &#x5C;Vert &#x5C;beta_2 &#x5C;Vert = &#x5C;sqrt{(&#x5C;alpha_2-&#x5C;frac12&#x5C;alpha_1, &#x5C;alpha_2-&#x5C;frac12&#x5C;alpha_1)} = &#x5C;sqrt{&#x5C;frac32} &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<h3 class="mume-header" id="44">44.</h3>
+
+<blockquote>
+<p>设 <span class="mathjax-exps">$A$</span> 是<strong>反对称</strong>实矩阵（即 <span class="mathjax-exps">$A&#x27; = -A$</span>），证明：<br>
+(1) <span class="mathjax-exps">$A$</span> 的特征值为 <span class="mathjax-exps">$0$</span> 或纯虚数<br>
+(2) 设 <span class="mathjax-exps">$&#x5C;alpha + &#x5C;beta&#x5C;mathrm{i}$</span> 是 <span class="mathjax-exps">$A$</span> 的属于一个非零特征值的特征向量，其中 <span class="mathjax-exps">$&#x5C;alpha, &#x5C;beta$</span> 均为实向量，则 <span class="mathjax-exps">$&#x5C;alpha$</span> 与 <span class="mathjax-exps">$&#x5C;beta$</span> 正交。</p>
+</blockquote>
+<p>(1)</p>
+<p>不妨假设 <span class="mathjax-exps">$&#x5C;lambda$</span> 为 <span class="mathjax-exps">$A$</span> 的特征值，<span class="mathjax-exps">$x$</span> 为对应的特征向量。即 <span class="mathjax-exps">$Ax=&#x5C;lambda x$</span>，两边同时乘 <span class="mathjax-exps">$x^*$</span>，有</p>
+<p><div class="mathjax-exps">$$x^* A x = &#x5C;lambda x^*x$$</div></p>
+<p>对上式取共轭转置得</p>
+<p><div class="mathjax-exps">$$x^* A^* x = &#x5C;lambda^* x^*x$$</div></p>
+<p>因 <span class="mathjax-exps">$A^* = -A$</span>，则有 <span class="mathjax-exps">$&#x5C;lambda + &#x5C;lambda^* = 0$</span>。故 <span class="mathjax-exps">$&#x5C;lambda$</span> 为 <span class="mathjax-exps">$0$</span> 或纯虚数</p>
+<p>(2)</p>
+<p>假设非零特征值为 <span class="mathjax-exps">$&#x5C;lambda&#x5C;mathrm{i}$</span>，根据定义有 <span class="mathjax-exps">$A(&#x5C;alpha + &#x5C;beta&#x5C;mathrm{i}) = &#x5C;lambda&#x5C;mathrm{i}(&#x5C;alpha + &#x5C;beta&#x5C;mathrm{i})$</span>，即</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}A&#x5C;alpha &amp;= -&#x5C;lambda&#x5C;beta &#x5C;&#x5C;A&#x5C;beta &amp;= &#x5C;lambda&#x5C;alpha &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<p>从而 <span class="mathjax-exps">$-&#x5C;alpha&#x27;A = -&#x5C;lambda&#x5C;beta&#x27;$</span>, 进一步地 <span class="mathjax-exps">$&#x5C;alpha&#x27;A&#x5C;alpha = &#x5C;lambda&#x5C;beta&#x27;&#x5C;alpha$</span>，两边同时取转置得 <span class="mathjax-exps">$-&#x5C;alpha&#x27;A&#x5C;alpha = &#x5C;lambda&#x5C;beta&#x27;&#x5C;alpha$</span></p>
+<p>故 <span class="mathjax-exps">$&#x5C;beta&#x27;&#x5C;alpha = 0$</span>，即 <span class="mathjax-exps">$&#x5C;alpha$</span> 与 <span class="mathjax-exps">$&#x5C;beta$</span> 正交。</p>
+<h3 class="mume-header" id="45">45.</h3>
+
+<blockquote>
+<p>设 <span class="mathjax-exps">$A$</span> 是 Hermite 矩阵。如果对任意向量 <span class="mathjax-exps">$x$</span> 均有 <span class="mathjax-exps">$x^*Ax = 0$</span>，则 <span class="mathjax-exps">$A = 0$</span>.</p>
+</blockquote>
+<p>由题设，当 <span class="mathjax-exps">$x$</span> 取 <span class="mathjax-exps">$A$</span> 的特征向量时，可以发现 <span class="mathjax-exps">$A$</span> 的特征值均为 <span class="mathjax-exps">$0$</span>。又因 <span class="mathjax-exps">$A$</span> 为 Hermite 矩阵，则 <span class="mathjax-exps">$A$</span> 可以对角化，且对角线元素全为0。故 <span class="mathjax-exps">$A=0$</span></p>
+<p>事实上，<span class="mathjax-exps">$n$</span> 阶 Hermite 矩阵 <span class="mathjax-exps">$A$</span> 正定（半正定）的充要条件是 <span class="mathjax-exps">$A$</span> 的特征值大于（大于等于）<span class="mathjax-exps">$0$</span>.</p>
+<h2 class="mume-header" id="&#x4E60;&#x9898;&#x4E8C;">习题二</h2>
+
+<h3 class="mume-header" id="33">33.</h3>
+
+<blockquote>
+<p>在欧式空间 <span class="mathjax-exps">$&#x5C;mathbb{R}^n$</span> 中求一个超平面 <span class="mathjax-exps">$W$</span>，使得向量 <span class="mathjax-exps">$e_1 + e_2$</span> 在 <span class="mathjax-exps">$W$</span> 中的最佳近似向量为 <span class="mathjax-exps">$e_2$</span>.</p>
+</blockquote>
+<p>利用最佳近似的几何意义，<span class="mathjax-exps">$e_1 + e_2$</span> 在 <span class="mathjax-exps">$W$</span> 中的最佳近似就是 <span class="mathjax-exps">$e_1 + e_2$</span> 在超平面 <span class="mathjax-exps">$W$</span> 上的投影 i.e.</p>
+<p><div class="mathjax-exps">$$&#x5C;mathrm{Proj}_{W}(e_1 + e_2) = e_2 &#x5C;implies e_1&#x5C;in W^{&#x5C;perp}$$</div></p>
+<p>则当 <span class="mathjax-exps">$n=2$</span> 时，<span class="mathjax-exps">$W = &#x5C;mathrm{span}&#x5C;{ e_2 &#x5C;}$</span>；当 <span class="mathjax-exps">$n&gt;2$</span> 时， <span class="mathjax-exps">$W=&#x5C;mathrm{span}&#x5C;{ e_2, e_3, &#x5C;cdots, e_n &#x5C;}$</span></p>
+<h3 class="mume-header" id="37-1">37.</h3>
+
+<blockquote>
+<p>设 <span class="mathjax-exps">$&#x5C;alpha_0$</span> 是欧式空间中 <span class="mathjax-exps">$V$</span> 的单位向量，<span class="mathjax-exps">$&#x5C;sigma(&#x5C;alpha) = &#x5C;alpha - 2(&#x5C;alpha, &#x5C;alpha_0)&#x5C;alpha_0, &#x5C;alpha&#x5C;in V$</span>. 证明<br>
+(1) <span class="mathjax-exps">$&#x5C;sigma$</span> 是线性变换；<br>
+(2) <span class="mathjax-exps">$&#x5C;sigma$</span> 是正交变换.</p>
+</blockquote>
+<p>(1)</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}&#x5C;sigma(m&#x5C;alpha + n&#x5C;beta) &amp;= m&#x5C;alpha + n&#x5C;beta - 2(m&#x5C;alpha+n&#x5C;beta, &#x5C;alpha_0)&#x5C;alpha_0 &#x5C;&#x5C;&amp;= m&#x5C;alpha + n&#x5C;beta - 2m(&#x5C;alpha, &#x5C;alpha_0)&#x5C;cdot&#x5C;alpha_0 - 2n(&#x5C;beta, &#x5C;alpha_0)&#x5C;alpha_0 &#x5C;&#x5C;&amp;= m(&#x5C;alpha - 2(&#x5C;alpha - &#x5C;alpha_0)&#x5C;alpha_0) + n(&#x5C;beta - 2(&#x5C;beta, &#x5C;alpha_0)&#x5C;alpha_0) &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<p>可见 <span class="mathjax-exps">$&#x5C;sigma$</span> 满足可加性和齐次性，故 <span class="mathjax-exps">$&#x5C;sigma$</span> 为线性变换</p>
+<p>(2)</p>
+<p>只需证明 <span class="mathjax-exps">$&#x5C;sigma$</span> 为等距变换</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}(&#x5C;sigma(&#x5C;alpha), &#x5C;sigma(&#x5C;alpha)) &amp;= (&#x5C;alpha - 2(&#x5C;alpha, &#x5C;alpha_0)&#x5C;alpha_0, &#x5C;alpha-2(&#x5C;alpha-&#x5C;alpha_0)&#x5C;alpha_0) &#x5C;&#x5C;&amp;= (&#x5C;alpha, &#x5C;alpha) - 4((&#x5C;alpha, &#x5C;alpha_0)&#x5C;alpha_0, &#x5C;alpha) + 4(&#x5C;alpha, &#x5C;alpha_0)^2(&#x5C;alpha_0, &#x5C;alpha_0) &#x5C;&#x5C;&amp;= (&#x5C;alpha, &#x5C;alpha) - 4(&#x5C;alpha, &#x5C;alpha_0)(&#x5C;alpha, &#x5C;alpha_0) + 4(&#x5C;alpha_0, &#x5C;alpha)^2 &#x5C;&#x5C;&amp;= (&#x5C;alpha, &#x5C;alpha) &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<p>故 <span class="mathjax-exps">$&#x5C;Vert &#x5C;sigma(&#x5C;alpha) &#x5C;Vert = &#x5C;Vert &#x5C;alpha &#x5C;Vert$</span></p>
+<h3 class="mume-header" id="38">38.</h3>
+
+<blockquote>
+<p>证明：欧式空间 <span class="mathjax-exps">$V$</span> 的线性变换 <span class="mathjax-exps">$&#x5C;sigma$</span> 是反对称变换 <span class="mathjax-exps">$&#x5C;iff &#x5C;sigma$</span> 在 <span class="mathjax-exps">$V$</span> 的标准正交基下的矩阵是反对称矩阵.</p>
+</blockquote>
+<p>设 <span class="mathjax-exps">$&#x5C;sigma$</span> 在 <span class="mathjax-exps">$V$</span> 的标准正交基 <span class="mathjax-exps">$&#x5C;alpha_1, &#x5C;alpha_2, &#x5C;cdots, &#x5C;alpha_n$</span> 下的矩阵为 <span class="mathjax-exps">$A = (&#x5C;alpha_{ij})$</span>, 则 <span class="mathjax-exps">$&#x5C;sigma(&#x5C;alpha_i) = &#x5C;sum_{k=1}^n a_{ki}&#x5C;alpha_k &#x5C;quad (1&#x5C;leq i&#x5C;leq n)$</span></p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}&amp;(&#x5C;sigma(&#x5C;alpha_i), &#x5C;alpha_j) = &#x5C;sum_{k=1}^n a_{ki}(&#x5C;alpha_k, &#x5C;alpha_j) = a_{ji} &#x5C;&#x5C;&amp;(&#x5C;alpha_i, &#x5C;sigma(&#x5C;alpha_j)) = &#x5C;sum_{k=1}^n a_{kj}(&#x5C;alpha_i, &#x5C;alpha_k) = a_{ij} &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<p>故 <span class="mathjax-exps">$&#x5C;sigma$</span> 是反对称矩阵 <span class="mathjax-exps">$&#x5C;iff a_{ji}=-a_{ij} &#x5C;iff A$</span> 反对称</p>
+<h2 class="mume-header" id="&#x4E60;&#x9898;&#x4E09;">习题三</h2>
+
+<h3 class="mume-header" id="10">10.</h3>
+
+<blockquote>
+<p>设 <span class="mathjax-exps">$A$</span> 的特征值为 <span class="mathjax-exps">$0,1$</span>，对应的特征向量为 <span class="mathjax-exps">$(1,2)&#x27;, (2,-1)&#x27;$</span>. 判断 <span class="mathjax-exps">$A$</span> 是否为对称矩阵并求 <span class="mathjax-exps">$A$</span>.</p>
+</blockquote>
+<p>两个特征向量正交，故 <span class="mathjax-exps">$A$</span> 可以正交对角化，从而 <span class="mathjax-exps">$A$</span> 对称</p>
+<p>事实上，不妨假设<br>
+<div class="mathjax-exps">$$A = &#x5C;begin{pmatrix}a &amp; b &#x5C;&#x5C;c &amp; d &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;quad P = &#x5C;begin{pmatrix}1 &amp; 2 &#x5C;&#x5C;2 &amp; -1 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>则 <span class="mathjax-exps">$P^{-1}AP = &#x5C;mathrm{diag}&#x5C;{ 0, 1 &#x5C;} &#x5C;iff AP = PD$</span></p>
+<p><div class="mathjax-exps">$$&#x5C;begin{pmatrix}a &amp; b &#x5C;&#x5C;c &amp; d &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;begin{pmatrix}1 &amp; 2 &#x5C;&#x5C;2 &amp; -1 &#x5C;&#x5C;&#x5C;end{pmatrix} = &#x5C;begin{pmatrix}0 &amp; 2 &#x5C;&#x5C;0 &amp; -1 &#x5C;&#x5C;&#x5C;end{pmatrix} &#x5C;implies a=&#x5C;frac45 &#x5C;quad b=c=-&#x5C;frac25 &#x5C;quad d=&#x5C;frac15$$</div></p>
+<p>从而</p>
+<p><div class="mathjax-exps">$$A = &#x5C;begin{pmatrix}4&#x2F;5 &amp; -2&#x2F;5 &#x5C;&#x5C;-2&#x2F;5 &amp; 1&#x2F;5 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<h2 class="mume-header" id="bonus-questions">Bonus Questions</h2>
+
+<blockquote>
+<p>求 <span class="mathjax-exps">$&#x5C;alpha = (7, -4, -1, 2)&#x27;$</span> 在 <span class="mathjax-exps">$&#x5C;omega$</span> 上的正交投影，其中 <span class="mathjax-exps">$&#x5C;omega$</span> 为 <span class="mathjax-exps">$Ax = 0$</span> 的解空间<br>
+<div class="mathjax-exps">$$A = &#x5C;begin{pmatrix}2 &amp; 1 &amp; 1 &amp; 3 &#x5C;&#x5C;3 &amp; 2 &amp; 2 &amp; 1 &#x5C;&#x5C;1 &amp; 2 &amp; 2 &amp; -9 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+</blockquote>
+<p>首先为求 <span class="mathjax-exps">$&#x5C;omega$</span>，将 <span class="mathjax-exps">$A$</span> 化为 Hermite 标准形</p>
+<p><div class="mathjax-exps">$$A &#x5C;rightarrow H_A = &#x5C;begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 5 &#x5C;&#x5C;0 &amp; 1 &amp; 1 &amp; -1 &#x5C;&#x5C;0 &amp; 0 &amp; 0 &amp; 0 &#x5C;&#x5C;&#x5C;end{pmatrix}$$</div></p>
+<p>可得 <span class="mathjax-exps">$&#x5C;omega = N_A = &#x5C;mathrm{span}&#x5C;{ (0, -1, 1, 0)&#x27;, (-5, 7, 0, 1)&#x27; &#x5C;}$</span></p>
+<p>下面进行 Schmidt 正交化</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}&amp;&#x5C;beta_1 = &#x5C;alpha_1 = (0, -1, 1, 0)&#x27; &amp;&#x5C;quad &#x5C;gamma_1 = &#x5C;frac{&#x5C;beta_1}{&#x5C;Vert &#x5C;beta_1 &#x5C;Vert} = &#x5C;frac{1}{&#x5C;sqrt2}(0, -1, 1, 0)&#x27; &#x5C;&#x5C;&amp;&#x5C;beta_2 = &#x5C;alpha_2 - (&#x5C;alpha_2, &#x5C;gamma_1)&#x5C;gamma_1 = (-5, &#x5C;frac72, &#x5C;frac72, 1)&#x27; &amp;&#x5C;quad &#x5C;gamma_2 = &#x5C;frac{&#x5C;beta_2}{&#x5C;Vert &#x5C;beta_2 &#x5C;Vert} = &#x5C;frac{1}{&#x5C;sqrt{202}}(-10, 7, 7, 2)&#x27; &#x5C;&#x5C;&#x5C;end{split}$$</div></p>
+<p>故</p>
+<p><div class="mathjax-exps">$$&#x5C;begin{split}&#x5C;mathrm{Proj}_{&#x5C;omega}&#x5C;alpha &amp;= (&#x5C;alpha, &#x5C;gamma_1)&#x5C;gamma_1 + (&#x5C;alpha, &#x5C;gamma_2)&#x5C;gamma_2 &#x5C;&#x5C;&amp;= &#x5C;frac32(0, -1, 1, 0)&#x27; - &#x5C;frac12(-10, 7, 7, 2)&#x27; &#x5C;&#x5C;&amp;= (5, -5, -2, -1)&#x27;&#x5C;end{split}$$</div></p>
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#%E4%B9%A0%E9%A2%98%E4%B8%80">习题一</a>
+<ul>
+<li><a href="#32">32.</a></li>
+<li><a href="#34">34.</a></li>
+<li><a href="#37">37.</a></li>
+<li><a href="#39">39.</a></li>
+<li><a href="#42">42.</a></li>
+<li><a href="#44">44.</a></li>
+<li><a href="#45">45.</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B9%A0%E9%A2%98%E4%BA%8C">习题二</a>
+<ul>
+<li><a href="#33">33.</a></li>
+<li><a href="#37-1">37.</a></li>
+<li><a href="#38">38.</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B9%A0%E9%A2%98%E4%B8%89">习题三</a>
+<ul>
+<li><a href="#10">10.</a></li>
+</ul>
+</li>
+<li><a href="#bonus-questions">Bonus Questions</a></li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    </body>
+    
+    
+    
+    <script>
+(function bindTaskListEvent() {
+  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
+  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
+    var checkbox = taskListItemCheckboxes[i]
+    var li = checkbox.parentElement
+    if (li.tagName !== 'LI') li = li.parentElement
+    if (li.tagName === 'LI') {
+      li.classList.add('task-list-item')
+    }
+  }
+}())    
+</script>
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  </html>
