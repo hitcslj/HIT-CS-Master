@@ -279,13 +279,13 @@ def PSNR(x,y):
     return 10*math.log((np.max(x))**2/mse,10)
 if __name__ == '__main__':
 
-    image = PIL.Image.open("test.jpg")
+    image = PIL.Image.open("test.png")
     image = np.array(image)
     Y = RGB_Y(image[:, :, 0], image[:, :, 1], image[:, :, 2])
 
     #DFT
     begin = time.time()
-    image,DFTimage= FTTforimage("test.jpg",channel=1)
+    image,DFTimage= FTTforimage("test.png",channel=1)
     end = time.time()
     print(end-begin)
     plt.imshow(image, cmap="gray")
@@ -293,13 +293,13 @@ if __name__ == '__main__':
     image = np.array(image)
     image = PIL.Image.fromarray(image)
     image.convert("L")
-    image.save("DFT_test.jpg")
+    image.save("DFT_test.png")
 
 
     IDFTimage = IDFFT(DFTimage)
     plt.imshow(IDFTimage, cmap="gray")
     #plt.show()
-    imsave("IDFFT_test.jpg", IDFTimage)
+    imsave("IDFFT_test.png", IDFTimage)
 
     #fu zhi iDFT
     amp = np.sqrt(np.multiply(DFTimage.imag*10,DFTimage.imag*10)+np.multiply(DFTimage.real*10,DFTimage.real*10))/10
@@ -312,7 +312,7 @@ if __name__ == '__main__':
     IDFTimage_save = ((
             IDFTimage - np.min(IDFTimage) )* 256.0 / (np.max(IDFTimage) - np.min(IDFTimage))).astype(
         np.uint8)
-    (PIL.Image.fromarray(IDFTimage_save, "L")).save("amp_IDFT_test.jpg")
+    (PIL.Image.fromarray(IDFTimage_save, "L")).save("amp_IDFT_test.png")
 
 
 
@@ -327,21 +327,21 @@ if __name__ == '__main__':
     aDDFTi_save = ((
             aDDFTi - np.min(aDDFTi)) * 256/ (np.max(aDDFTi) - np.min(aDDFTi))).astype(
         np.uint8)
-    (PIL.Image.fromarray(aDDFTi_save, "L")).save("alpha_IDFT_test.jpg")
+    (PIL.Image.fromarray(aDDFTi_save, "L")).save("alpha_IDFT_test.png")
     """
     #DCT
     DCTimage = DCT(Y)
     DCTimage_save = (
                 DCTimage - np.min(DCTimage) * 256 / (np.max(DCTimage) - np.min(DCTimage))).astype(
         np.uint8)
-    (PIL.Image.fromarray(DCTimage_save, "L")).save("DCT_test.jpg")
+    (PIL.Image.fromarray(DCTimage_save, "L")).save("DCT_test.png")
 
     zig_image = zig_zag(DCTimage, 10)
     zig_image = IDCT(zig_image)
     zig_image = (
             zig_image - np.min(zig_image) * 256 / (np.max(zig_image) - np.min(zig_image))).astype(
         np.uint8)
-    (PIL.Image.fromarray(zig_image, "L")).save("IDCT_test.jpg")
+    (PIL.Image.fromarray(zig_image, "L")).save("IDCT_test.png")
     
     lamdas = [1,2,4,6,8,10]
     for lamda in lamdas:
