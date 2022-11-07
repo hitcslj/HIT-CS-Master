@@ -289,7 +289,7 @@ if __name__ == '__main__':
     end = time.time()
     print(end-begin)
     plt.imshow(image, cmap="gray")
-    #plt.show()
+    plt.show()
     image = np.array(image)
     image = PIL.Image.fromarray(image)
     image.convert("L")
@@ -298,7 +298,7 @@ if __name__ == '__main__':
 
     IDFTimage = IDFFT(DFTimage)
     plt.imshow(IDFTimage, cmap="gray")
-    #plt.show()
+    plt.show()
     imsave("IDFFT_test.png", IDFTimage)
 
     #fu zhi iDFT
@@ -328,7 +328,7 @@ if __name__ == '__main__':
             aDDFTi - np.min(aDDFTi)) * 256/ (np.max(aDDFTi) - np.min(aDDFTi))).astype(
         np.uint8)
     (PIL.Image.fromarray(aDDFTi_save, "L")).save("alpha_IDFT_test.png")
-    """
+
     #DCT
     DCTimage = DCT(Y)
     DCTimage_save = (
@@ -353,5 +353,4 @@ if __name__ == '__main__':
 
         psnr = PSNR(Y, zig_image)
         print(str(lamda)+" : "+str(psnr))
-    """
 
