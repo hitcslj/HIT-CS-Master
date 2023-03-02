@@ -6,5 +6,5 @@
 
 ## 2023年春季学期
 
-* [ ] [算法](./algoritm)
+* [ ] [算法](./algorithm)
 * [ ] [凸优化](./convex_optimizer)
