@@ -1,3 +1,12 @@
+## 使用环境
+**python3.7**
+
+``` 
+pip install matplotlib
+pip install numpy
+```
+
+## 实验内容
 将原问题分解：
 
 1. 数据生成模块
