@@ -1,7 +1,4 @@
-def cross_product(A, B, P):
-    # 向量叉乘，ABxAP,顺时针为负(P在AB下方)，逆时针为正（P在AB上方）
-    return (B[0] - A[0])*(P[1] - A[1]) - (P[0] - A[0]) * (B[1] - A[1])
-
+from utils import cross_product
 
 # 判断点P是否在三角形ABC内
 def in_triangle(A, B, C, P):
@@ -39,6 +36,6 @@ def bruteForceConvexHull(points):
 if __name__ == '__main__':
     points = [[1, 1], [2, 2], [2, 0], [2, 4], [3, 3], [4, 2]]
     outputs = bruteForceConvexHull(points)
-    print(outputs)
+    # print(outputs)
     target = [[1, 1], [2, 0], [3, 3], [2, 4], [4, 2]]
     print(sorted(target) == sorted(outputs))
