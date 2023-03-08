@@ -1,6 +1,7 @@
 from functools import cmp_to_key
 from typing import *
 
+
 def grahamScanConvexHull(points):
     def cross(p: List[int], q: List[int], r: List[int]) -> int:
         return (q[0] - p[0]) * (r[1] - q[1]) - (q[1] - p[1]) * (r[0] - q[0])
@@ -14,8 +15,8 @@ def grahamScanConvexHull(points):
 
     # 找到 y 最小的点 bottom
     bottom = 0
-    for i, tree in enumerate(points):
-        if tree[1] < points[bottom][1]:
+    for i, point in enumerate(points):
+        if point[1] < points[bottom][1]:
             bottom = i
     points[bottom], points[0] = points[0], points[bottom]
 
@@ -44,6 +45,9 @@ def grahamScanConvexHull(points):
         stack.append(i)
     return [points[i] for i in stack]
 
-if __name__=='__main__':
-    points = []
 
+if __name__ == '__main__':
+    points = [[1, 1], [2, 2], [2, 0], [2, 4], [3, 3], [4, 2]]
+    outputs = grahamScanConvexHull(points)
+    target = [[1, 1], [2, 0], [3, 3], [2, 4], [4, 2]]
+    print(sorted(target) == sorted(outputs))

@@ -21,7 +21,7 @@
 4.1 实现基于枚举方法的凸包求解算法
 
 ```bash
-python 
+python main.py --algo bruteForce 
 ```
 
 
@@ -34,7 +34,9 @@ python main.py --algo grahamScan
 
 
 4.3 实现基于分治思想的凸包求解算法
- 
+```bash
+python main.py --algo div 
+```
 
 
 4.4 对比三种凸包求解算法 
