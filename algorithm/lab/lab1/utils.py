@@ -1,29 +1,7 @@
 import time
-from functools import cmp_to_key
 import matplotlib.pyplot as plt
 import random
-from typing import *
 
-
-
-
-# 输入的点都是凸包上点顶点，输出按照逆时针顺序返回点凸包
-def convex_hull(points):
-    pivot = min(points, key=lambda p: (p.y, p.x))
-    def distance(p: List[int], q: List[int]) -> int:
-        return (p[0] - q[0]) * (p[0] - q[0]) + (p[1] - q[1]) * (p[1] - q[1])
-    def cmp(a: List[int], b: List[int]) -> int:
-        diff = - cross_product(points[0], a, b)
-        return diff if diff else distance(points[0], a) - distance(points[0], b)
-
-    points[1:] = sorted(points[1:], key=cmp_to_key(cmp))
-
-    stack = [pivot, points[1]]
-    for p in points[2:]:
-        while len(stack) >= 2 and cross_product(stack[-2],stack[-1],p) < 0:
-            stack.pop()
-        stack.append(p)
-    return stack
 
 def createData(sizes=[]):
     """

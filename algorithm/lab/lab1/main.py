@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
 # python main.py --algo bruteForce --sizes 10,20,30
 
-# python main.py --algo 'grahamScan' --sizes 1000,2000,3000
+# python main.py --algo grahamScan --sizes 1000,2000,3000
 
 # python main.py --algo div --sizes 1000,2000,3000
 
