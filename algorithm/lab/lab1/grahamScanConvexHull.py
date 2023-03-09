@@ -1,28 +1,21 @@
-from functools import cmp_to_key
 from typing import *
-from utils import cross_product
-
+from math import *
 def grahamScanConvexHull(points):
+    def cross_product(A, B, P):
+        # 计算向量AB和向量BP的叉积
+        return (B[0] - A[0]) * (P[1] - B[1]) - (P[0] - B[0]) * (B[1] - A[1])
+
     def distance(p: List[int], q: List[int]) -> int:
         return (p[0] - q[0]) * (p[0] - q[0]) + (p[1] - q[1]) * (p[1] - q[1])
 
     n = len(points)
-    if n < 4:
+    if n < 3:
         return points
-
-    # 找到 y 最小的点 bottom
-    bottom = 0
-    for i, point in enumerate(points):
-        if point[1] < points[bottom][1]:
-            bottom = i
-    points[bottom], points[0] = points[0], points[bottom]
-
-    # 以 bottom 原点，按照极坐标的角度大小进行排序
-    def cmp(a: List[int], b: List[int]) -> int:
-        diff = - cross_product(points[0], a, b)
-        return diff if diff else distance(points[0], a) - distance(points[0], b)
-
-    points[1:] = sorted(points[1:], key=cmp_to_key(cmp))
+    # 找到最下面中最左边的点
+    points.sort(key=lambda p: (p[1], p[0]))
+    # 将所有点按照与最下面的点的极角排序
+    points[1:] = sorted(points[1:],
+                        key=lambda p: (atan2(p[1] - points[0][1], p[0] - points[0][0]), distance(p, points[0])))
 
     # 对于凸包最后且在同一条直线的元素按照距离从大到小进行排序
     r = n - 1
@@ -33,14 +26,13 @@ def grahamScanConvexHull(points):
         points[l], points[h] = points[h], points[l]
         l += 1
         h -= 1
-
-    stack = [0, 1]
+    # 使用栈进行扫描
+    stack = [points[0], points[1]]
     for i in range(2, n):
-        # 如果当前元素与栈顶的两个元素构成的向量顺时针旋转，则弹出栈顶元素
-        while len(stack) > 1 and cross_product(points[stack[-2]], points[stack[-1]], points[i]) < 0:
+        while len(stack) >= 2 and cross_product(stack[-2], stack[-1], points[i]) < 0:
             stack.pop()
-        stack.append(i)
-    return [points[i] for i in stack]
+        stack.append(points[i])
+    return stack
 
 
 if __name__ == '__main__':
@@ -48,3 +40,12 @@ if __name__ == '__main__':
     outputs = grahamScanConvexHull(points)
     target = [[1, 1], [2, 0], [3, 3], [2, 4], [4, 2]]
     print(sorted(target) == sorted(outputs))
+
+
+
+
+
+
+
+
+

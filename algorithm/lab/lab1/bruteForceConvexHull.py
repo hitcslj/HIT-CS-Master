@@ -1,4 +1,7 @@
-from utils import cross_product
+from math import *
+def cross_product(A, B, P):
+    # 计算向量AB和向量AP的叉积.负(P在AB下方),正（P在AB上方）
+    return (B[0] - A[0]) * (P[1] - A[1]) - (P[0] - A[0]) * (B[1] - A[1])
 
 # 判断点P是否在三角形ABC内
 def in_triangle(A, B, C, P):
@@ -27,15 +30,16 @@ def bruteForceConvexHull(points):
     for i, p in enumerate(points):
         if in_any_triangle(p, points):
             flag[i] = False
-    hull = [p for i, p in enumerate(points) if flag[i]]
+    points = [p for i, p in enumerate(points) if flag[i]]
     # 对凸包的顶点按照极角排序
-    hull.sort(key=lambda p: (p[1], p[0]))
-    hull = hull[:3] + sorted(hull[3:], key=lambda p: -cross_product(hull[0], hull[1], p))
-    return hull
+    points.sort(key=lambda p: (p[1], p[0]))
+    points[1:] = sorted(points[1:],
+                        key=lambda p: (atan2(p[1] - points[0][1], p[0] - points[0][0])))
+    return points
 
 if __name__ == '__main__':
     points = [[1, 1], [2, 2], [2, 0], [2, 4], [3, 3], [4, 2]]
     outputs = bruteForceConvexHull(points)
-    # print(outputs)
+    print(outputs)
     target = [[1, 1], [2, 0], [3, 3], [2, 4], [4, 2]]
     print(sorted(target) == sorted(outputs))

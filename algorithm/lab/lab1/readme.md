@@ -21,21 +21,21 @@
 4.1 实现基于枚举方法的凸包求解算法
 
 ```bash
-python main.py --algo bruteForce 
+python main.py --algo bruteForce --sizes 10,20,30
 ```
 
 
 4.2 实现基于 Graham-Scan 的凸包求解算法
 
 ```bash
-python main.py --algo grahamScan 
+python main.py --algo 'grahamScan' --sizes 1000,2000,3000
 ```
 
 
 
 4.3 实现基于分治思想的凸包求解算法
 ```bash
-python main.py --algo div 
+python main.py --algo div --sizes 1000,2000,3000
 ```
 
 
