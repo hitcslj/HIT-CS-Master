@@ -9,7 +9,7 @@
 
 ### 实验问题
 
-寻路问题。以图 1 为例，输入一个方格表示的地图，要求用 A*算法找到并输出从起点（在方格中标示字母 S）到终点（在方格中标示字母 T）的代价最小的路径。有如下条件及要求：
+寻路问题。输入一个方格表示的地图，要求用 A*算法找到并输出从起点（在方格中标示字母 S）到终点（在方格中标示字母 T）的代价最小的路径。有如下条件及要求：
 
 1. 每一步都落在方格中，而不是横竖线的交叉点。
 2. 灰色格子表示障碍，无法通行。
@@ -18,32 +18,45 @@
 5. 经过一条路径总的代价为移动代价+地形代价。其中移动代价是路径上所做的所有移动的代价的总和；地形代价为路径上除起点外所有格子的地形代价的总和。比如，在下图的示例中，路径 A→B→C 的代价为√2+1(移动)+0(地形)，而路径 D→E→F 的代价为 2(移动)+6(地形)。
 
 
-<img src="img.png" width = "100" height = "100" div align=center />
+<img src="images/img.png" width = "100" height = "100" div align=center />
 
 
 ```
-输入: points = [[1,1],[2,2],[2,0],[2,4],[3,3],[4,2]]
-输出: [[1,1],[2,0],[3,3],[2,4],[4,2]]
+输入: 一张矩形map，包含高宽，起点，终点，格子里的代价
+输出: 一条最优路径，从起点到终点。如果不存在，输出-1
 ```
+
+![map1](./images/map1.png)
+![map2](./images/map2.png)
 
 ### 实验步骤
 
 
-1. 实现单向与双向的A*搜索算法
+
+1. 实现单向的A*搜索算法
+
 
 ```bash
-python main.py --algo bruteForce --sizes 10,20,30
+python main.py --algo astar --data_path map1.txt # 地图1
+
+python main.py --algo astar --data_path map2.txt # 地图2
 ```
+![map1_astar](./images/map1_astar.png)
+![map2_astar](./images/map2_astar.png)
 
-
-2. 测试 A*算法的应用
+2. 双向的A*搜索算法
 
 ```bash
-python main.py --algo grahamScan --sizes 1000,2000,3000
+python main.py --algo biastar --data_path map1.txt # 地图1
+
+python main.py --algo biastar --data_path map2.txt # 地图2
 ```
+![map1_biastar](./images/map1_biastar.png)
+![map2_biastar](./images/map2_biastar.png)
 
 
-3. 结果可视化
+
+
 
 
  
