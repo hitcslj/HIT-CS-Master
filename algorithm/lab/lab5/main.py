@@ -2,7 +2,7 @@ from utils import createData,plot_performance_curve
 from quickSort import quickSort
 import argparse
 
-parser = argparse.ArgumentParser(description='convex hull algorithm')
+parser = argparse.ArgumentParser(description='quick sort algorithm')
 parser.add_argument('--algo',
                     type=str,
                     default='quickSort1',

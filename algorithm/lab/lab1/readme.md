@@ -18,7 +18,7 @@
 ### 实验步骤
 
 
-4.1 实现基于枚举方法的凸包求解算法
+1 实现基于枚举方法的凸包求解算法
 
 ```bash
 python main.py --algo bruteForce --sizes 10,20,30
@@ -26,7 +26,7 @@ python main.py --algo bruteForce --sizes 10,20,30
 
 ![img.png](Performance_Curve_for_bruteForceConvexHull.png)
 
-4.2 实现基于 Graham-Scan 的凸包求解算法
+2 实现基于 Graham-Scan 的凸包求解算法
 
 ```bash
 python main.py --algo grahamScan --sizes 1000,2000,3000
@@ -35,7 +35,7 @@ python main.py --algo grahamScan --sizes 1000,2000,3000
 ![img.png](Performance_Curve_for_grahamScanConvexHull.png)
 
 
-4.3 实现基于分治思想的凸包求解算法
+3 实现基于分治思想的凸包求解算法
 ```bash
 python main.py --algo div --sizes 1000,2000,3000
 ```
@@ -44,7 +44,7 @@ python main.py --algo div --sizes 1000,2000,3000
 
 
 
-4.4 对比三种凸包求解算法 
+4 对比三种凸包求解算法 
 
 （1）实现随机生成正方形(0,0)-(0,100)-(100,100)-(100,0)内的点集合 Q 的算法；
 

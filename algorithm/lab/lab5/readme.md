@@ -19,7 +19,7 @@
 ### 实验步骤
 
 
-4.1 按照算法导论中给出的伪代码实现快速排序
+1 按照算法导论中给出的伪代码实现快速排序
 
 ```bash
 python main.py --algo quickSort1 --size 1000
@@ -27,7 +27,7 @@ python main.py --algo quickSort1 --size 1000
 
 ![img.png](./Performance_Curve_for_quickSort1.png)
 
-4.2 测试算法在不同输入下的表现
+2 测试算法在不同输入下的表现
 
 ```bash
 python main.py --algo quickSort2 --size 1000
