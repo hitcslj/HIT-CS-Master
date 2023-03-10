@@ -32,5 +32,5 @@ def plot_performance_curve(algorithm, data_sets):
     plt.xlabel("Data Size")
     plt.ylabel("Running Time (ms)")
     plt.title("Performance Curve for {}".format(algorithm.__name__))
-    plt.savefig("Performance Curve for {}".format(algorithm.__name__))
+    plt.savefig("Performance_Curve_for_{}".format(algorithm.__name__))
     plt.show()

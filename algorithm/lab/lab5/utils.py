@@ -1,11 +1,10 @@
 import random
 import time
 import matplotlib.pyplot as plt
-import numpy as np
 
-def createData(flag=False,n=11): #flag表示是否记录文件
+def createData(N=10**4):
     data_sets = []
-    N = 10**4 # N用来调整一组数据的size
+    n = 11
     for i in range(n):
         percentage = i * 10
         num_duplicates = (percentage * N) // 100
@@ -13,11 +12,6 @@ def createData(flag=False,n=11): #flag表示是否记录文件
         data += [random.choice(data) for _ in range(num_duplicates)]
         random.shuffle(data)
         data_sets.append(data)
-    if flag:
-        # 将数据集写入文件
-        with open("data.txt", "w") as f:
-            for data in data_sets:
-                np.savetxt(f, np.array(data).reshape(1, -1), fmt="%d")
     return data_sets
 
 def run_algorithm(algorithm, data): #测试算法运行时间
@@ -33,6 +27,6 @@ def plot_performance_curve(algorithm, data_sets):
     plt.xlabel("Data duplicate Size")
     plt.ylabel("Running Time (ms)")
     plt.title("Performance Curve for {}".format(algorithm.__name__))
-    plt.savefig("quicksort_performance.png")
+    plt.savefig("Performance_Curve_for_{}.png".format(algorithm.__name__))
     plt.show()
 

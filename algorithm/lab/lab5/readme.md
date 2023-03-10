@@ -1,24 +1,37 @@
-## 使用环境
-**python3.7**
+## 实验五：快速排序
 
-``` 
-pip install matplotlib
-pip install numpy
+### 实验目的
+1. 掌握快速排序随机算法的设计思想与方法。
+2. 熟练使用高级编程语言实现不同的快速排序算法。
+3. 利用实验测试给出不同快速排序算法的性能以理解其优缺点。
+
+### 实验问题
+快速排序是算法导论中的经典算法。在本实验中，给定一个长为 n 的整数数
+组，要求将数组升序排序。
+
+ 
+```
+输入: nums = [1,7,3,5,4,2,2]
+输出: [1, 2, 2, 3, 4, 5, 7]
 ```
 
-## 实验内容
-将原问题分解：
 
-1. 数据生成模块
-2. 排序模块
-3. 时间统计模块
-4. 绘图比较模块
+### 实验步骤
 
-其中utils.py里包含里数据生成，时间统计和绘图模块。
-quickSort里包含里算法模块。
-由于python运行太慢，所以为将数据规模，缩小为10**4
 
-运行指令：
+4.1 按照算法导论中给出的伪代码实现快速排序
+
 ```bash
-python main.py
+python main.py --algo quickSort1 --size 1000
 ```
+
+![img.png](./Performance_Curve_for_quickSort1.png)
+
+4.2 测试算法在不同输入下的表现
+
+```bash
+python main.py --algo quickSort2 --size 1000
+```
+
+![img.png](./Performance_Curve_for_quickSort2.png)
+

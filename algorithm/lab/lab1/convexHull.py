@@ -8,6 +8,8 @@ def convexHull(method='bruteForce'):
         return bruteForceConvexHull # T(n) = O(n^4)
     elif method == 'grahamScan':
         return grahamScanConvexHull # T(n) = O(nlogn)
-    else:
+    elif method=='div':
         return divConvexHull # T(n) = O(nlogn)
+    else:
+        raise ValueError("method must in [bruteForce,grahamScan,div]")
 
