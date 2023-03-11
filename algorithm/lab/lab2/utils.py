@@ -1,5 +1,6 @@
 import pygame
 import math
+import time
 
 # Colors
 RED = (255, 0, 0)
@@ -87,8 +88,8 @@ class Spot:
         self.cost_idx = 0  # ?
 
     def make_path(self):
-        if not self.is_start(): self.color = YELLOW
-        # if not self.is_start() and not self.is_end(): self.color = YELLOW
+        # if not self.is_start(): self.color = YELLOW
+        if not self.is_start() and not self.is_end(): self.color = YELLOW
 
     def draw(self, win):
         # 绘制矩形
@@ -130,33 +131,6 @@ def make_grid(rows, cols, gap):
     return grid
 
 
-def load_map(filename):
-    grid = []
-    f = open(filename, 'r')
-    [rows, cols, gap] = [int(s) for s in f.readline().split()]
-    start = None
-    end = None
-    for i in range(rows):
-        line = f.readline().split()
-        grid.append([])
-        for j in range(cols):
-            grid[i].append(Spot(i, j, gap, rows, cols))
-            cost_idx = 0
-            if line[j][0] == 'S':
-                grid[i][j].make_start()
-                start = grid[i][j]
-                cost_idx = int(line[j][1:])
-            elif line[j][0] == 'T':
-                grid[i][j].make_end()
-                end = grid[i][j]
-                cost_idx = int(line[j][1:])
-            elif line[j] == '-1':
-                grid[i][j].make_barrier()
-            else:
-                cost_idx = int(line[j])
-            grid[i][j].cost_idx = cost_idx
-    f.close()
-    return grid, start, end, rows, cols, gap
 
 def bye():
     pygame.quit()
@@ -164,6 +138,7 @@ def bye():
 
 
 def reconstruct_path(came_from, current, draw):
+    current.make_path()
     while current in came_from:
         current = came_from[current]
         current.make_path()
@@ -213,6 +188,40 @@ def clear_trace(grid):
                 spot.reset_color()
 
 
+def h(p1, p2):
+    x1, y1 = p1
+    x2, y2 = p2
+    d = min(abs(x1 - x2), abs(y1 - y2))
+    return math.sqrt(2) * d + abs(x1 - x2) + abs(y1 - y2) - 2 * d
+
+def load_map(filename):
+    grid = []
+    f = open(filename, 'r')
+    [rows, cols, gap] = [int(s) for s in f.readline().split()]
+    start = None
+    end = None
+    for i in range(rows):
+        line = f.readline().split()
+        grid.append([])
+        for j in range(cols):
+            grid[i].append(Spot(i, j, gap, rows, cols))
+            cost_idx = 0
+            if line[j][0] == 'S':
+                grid[i][j].make_start()
+                start = grid[i][j]
+                cost_idx = int(line[j][1:])
+            elif line[j][0] == 'T':
+                grid[i][j].make_end()
+                end = grid[i][j]
+                cost_idx = int(line[j][1:])
+            elif line[j] == '-1':
+                grid[i][j].make_barrier()
+            else:
+                cost_idx = int(line[j])
+            grid[i][j].cost_idx = cost_idx
+    f.close()
+    return grid, start, end, rows, cols, gap
+
 def save_map(filename, grid):
     with open(filename, 'w') as f:
         rows = grid[0][0].total_rows
@@ -233,12 +242,6 @@ def save_map(filename, grid):
                     s += str(spot.cost_idx)
                 f.write(s + ' ')
             f.write('\n')
-
-def h(p1, p2):
-    x1, y1 = p1
-    x2, y2 = p2
-    d = min(abs(x1 - x2), abs(y1 - y2))
-    return math.sqrt(2) * d + abs(x1 - x2) + abs(y1 - y2) - 2 * d
 
 def init_map(data_path,algo_name):
     ROWS = 20
@@ -261,3 +264,74 @@ def init_map(data_path,algo_name):
     else:
         pygame.display.set_caption("Bidirectional A* Path Finding Algorithm")
     return WIN, ROWS, COLS, GAP,grid,start, end
+
+def excute(algo,win, ROWS, COLS, GAP, grid, start = None, end = None):
+    # 黄色格子代表沙漠，经过它的代价为 4 -- idx 2
+    # 蓝色格子代表溪流，经过它的代价为 2 -- idx 1
+    # 白色格子为普通地形，经过它的代价为 0 -- idx 0
+    cost_idx = 0
+
+    while True:
+        draw(win, grid, ROWS, COLS, GAP)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                bye()
+
+            if pygame.mouse.get_pressed()[0]: # LEFT
+                pos = pygame.mouse.get_pos()
+                row, col = get_clicked_pos(pos, GAP)
+                print("pressed: ", row, col)
+                spot = grid[row][col]
+                if cost_idx:
+                    if not spot.is_barrier(): spot.cost_idx = cost_idx
+                    continue
+                if not start and spot != end:
+                    start = spot
+                    start.make_start()
+
+                elif not end and spot != start:
+                    end = spot
+                    end.make_end()
+
+                elif spot != end and spot != start:
+                    spot.make_barrier()
+
+            elif pygame.mouse.get_pressed()[2]: # RIGHT
+                pos = pygame.mouse.get_pos()
+                row, col = get_clicked_pos(pos, GAP)
+                spot = grid[row][col]
+                spot.reset()
+                if spot == start:
+                    start = None
+                elif spot == end:
+                    end = None
+
+            if event.type == pygame.KEYDOWN:
+                print("key", event.key)
+                if event.key == pygame.K_SPACE and start and end:
+                    for row in grid:
+                        for spot in row:
+                            spot.update_neighbors(grid)
+                    clear_trace(grid)
+                    algo(lambda: draw(win, grid, ROWS, COLS, GAP), grid, start, end)
+                elif event.key >= pygame.K_0 and event.key <= pygame.K_9:
+                    idx = event.key - pygame.K_0
+                    if idx < len(EXTRA_COST):
+                        cost_idx = idx
+                # save map
+                elif event.key == pygame.K_s:
+                    filename = time.strftime("%Y%m%d-%H%M%S.txt")
+                    save_map(filename, grid)
+                # new grid
+                elif event.key == pygame.K_n:
+                    start = None
+                    end = None
+                    grid = make_grid(ROWS, COLS, GAP)
+                # clear trace
+                elif event.key == pygame.K_c:
+                    clear_trace(grid)
+                # `q` to quit
+                elif event.key == pygame.K_q:
+                    bye()
+
+    pygame.quit()

@@ -54,6 +54,12 @@ python main.py --algo biastar --data_path map2.txt # 地图2
 ![map1_biastar](./images/map1_biastar.png)
 ![map2_biastar](./images/map2_biastar.png)
 
+> 操作指南——按下空格:开始，按下q:退出
+
+    
+
+    
+
 
 
 
