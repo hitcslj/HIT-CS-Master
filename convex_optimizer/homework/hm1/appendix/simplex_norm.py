@@ -55,16 +55,16 @@ def simplex(c, A, b):
 
 
 if __name__=='__main__':
-    # A = np.array([[1,4,2,1,0],[1,2,4,0,1]])
-    # c = np.array([6,14,13,0,0])
-    # b = np.array([48,60])
-    # print(np.hstack((np.zeros(1),np.zeros(1),c)))
-    # solution = simplex(c,A,b)
-    # print(solution)
-
-    A = np.array([[4, 5, -2, 1, 0], [1, -2, 1, 0, 1]])
-    c = np.array([-3, 2, 4, 0, 0])
-    b = np.array([22, 30])
-    print(np.hstack((np.zeros(1), np.zeros(1), c)))
-    solution = simplex(c, A, b)
+    A = np.array([[1,4,2,1,0],[1,2,4,0,1]])
+    c = np.array([6,14,13,0,0])
+    b = np.array([48,60])
+    print(np.hstack((np.zeros(1),np.zeros(1),c)))
+    solution = simplex(c,A,b)
     print(solution)
+
+    # A = np.array([[4, 5, -2, 1, 0], [1, -2, 1, 0, 1]])
+    # c = np.array([-3, 2, 4, 0, 0])
+    # b = np.array([22, 30])
+    # print(np.hstack((np.zeros(1), np.zeros(1), c)))
+    # solution = simplex(c, A, b)
+    # print(solution)
