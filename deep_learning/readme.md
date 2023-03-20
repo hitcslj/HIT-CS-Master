@@ -20,3 +20,5 @@ PPT（demo演示）
 github:https://github.com/WZMIAOMIAO/deep-learning-for-image-processing/
 
 bilibili: https://space.bilibili.com/18161609/?spm_id_from=333.999.0.0
+
+上了这门课，感觉对深度学习有了一个基本认识。将上述仓库的代码都手敲一遍，对于理解深度学习很有帮助。
