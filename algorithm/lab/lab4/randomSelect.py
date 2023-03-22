@@ -1,21 +1,37 @@
 import random
 
 def randomSelect(nums):
-    return select_kth_smallest(nums,2)
+    return lazy_select(nums,2)
 
 
-def select_kth_smallest(arr, k):
-    pivot = random.choice(arr)
-    lows = [el for el in arr if el < pivot]
-    highs = [el for el in arr if el > pivot]
-    pivots = [el for el in arr if el == pivot]
+def rank(arr, x):
+    return sum(1 for el in arr if el <= x)
 
-    if k <= len(lows):
-        return select_kth_smallest(lows, k)
-    elif k > len(lows) + len(pivots):
-        return select_kth_smallest(highs, k - len(lows) - len(pivots))
-    else:
-        return pivot
+
+def lazy_select(S, k):
+    n = len(S)
+    while True:
+        m = int(n**(3/4))
+        p = int(k/n)
+        R = random.sample(S, k=m)
+        R.sort()
+        x = p*m
+        gap = int(n**(1/2))
+
+        l = max(x - gap, 0)
+        h = min(x + gap, m-1)
+
+        L = R[l]
+        H = R[h]
+
+        Lp = rank(S, L)
+        Hp = rank(S, H)
+
+        P = [y for y in S if L <= y <= H]
+
+        if Lp <= k <= Hp and len(P) <= 4 * n**(3/4) + 1:
+            P.sort()
+            return P[k - Lp]
 
 if __name__=='__main__':
     nums = [3,2,1,5,6,4]

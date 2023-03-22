@@ -23,3 +23,9 @@ if __name__ == '__main__':
     plot_performance_curve(algorithm, datasets)
 
 
+# python main.py --algo divSelect --sizes 1000,2000,5000,10000,20000,50000,100000
+
+# python main.py --algo randomSelect --sizes 1000,2000,5000,10000,20000,50000,100000
+
+
+
