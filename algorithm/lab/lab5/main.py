@@ -21,3 +21,8 @@ if __name__ == '__main__':
     plot_performance_curve(algorithm, datasets)
 
 
+# python main.py --algo quickSort1 --size 1000
+# python main.py --algo quickSort2 --size 1000
+
+
+

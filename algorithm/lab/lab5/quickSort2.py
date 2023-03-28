@@ -1,10 +1,12 @@
+import random
 from typing import List
 
 
 def quickSort2(nums) -> List[int]:
     if len(nums) <= 1:
         return nums
-    pivot = nums[len(nums) // 2]  # 随机选择一个枢轴元素
+    mid = random.randint(0, len(nums) - 1)
+    pivot = nums[mid]  # 随机选择一个枢轴元素
     left = [x for x in nums if x < pivot]
     middle = [x for x in nums if x == pivot]
     right = [x for x in nums if x > pivot]
