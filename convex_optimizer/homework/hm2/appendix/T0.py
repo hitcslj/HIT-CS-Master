@@ -3,7 +3,6 @@ from scipy.optimize import minimize
 import autograd.numpy as np
 from autograd import grad
 
-
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
