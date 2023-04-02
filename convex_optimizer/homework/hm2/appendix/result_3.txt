@@ -1,0 +1,3 @@
+Goldstein方法结果:  0.9999995231628418
+Goldstein-Price方法结果:  0.00390625
+Wolfe-Powell方法结果:  0.00390625

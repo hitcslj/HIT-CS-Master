@@ -1,7 +1,14 @@
 Ackley - Minimum value: 4.440892098500626e-16 at [0. 0.]
+
 Booth - Minimum value: 0.0 at [1. 3.]
+
 Branin - Minimum value: 0.3978873577300295 at [-3.1415928  12.27499991]
+
 Flower - Minimum value: 0.0 at [0. 0.]
+
 Michalewicz - Minimum value: -1.6026068201970993 at [2.20290554 2.20290552]
+
 Rosenbrock Banana - Minimum value: 0.0 at [1. 1.]
+
 Wheeler - Minimum value: -0.9999999999568931 at [0.99999408 1.5000058 ]
+

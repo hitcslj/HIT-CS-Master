@@ -125,7 +125,7 @@ bounds = {
 }
 
 # Find the minimum values of the functions using the L-BFGS-B method
-with open("result.txt", "w") as result_file:
+with open("result_0.txt", "w") as f:
     for func_name, func in functions.items():
         initial_guess = initial_guesses[func_name]
         bound = bounds[func_name]
@@ -133,4 +133,4 @@ with open("result.txt", "w") as result_file:
         result = minimize(func, initial_guess, method="BFGS", bounds=bound, jac=gradient, options={"maxiter": 10000, "disp": True})
         output = f"{func_name} - Minimum value: {result.fun} at {result.x}\n"
         print(output)
-        result_file.write(output)
+        print(output, file=f)

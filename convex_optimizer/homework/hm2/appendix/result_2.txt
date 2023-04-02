@@ -1,0 +1,13 @@
+Problem a:
+Golden Section Search: 0.25735421375199785
+Fibonacci Search: 0.2647058823529412
+Bisection Search: 0.234375
+Dichotomous Search: 0.25394531249999996
+Shubert-Piyavskii (L = 5): -0.0277632
+
+Problem b:
+Golden Section Search: 3.608630593568614
+Fibonacci Search: 3.6140583554376664
+Bisection Search: 3.5888671875
+Dichotomous Search: 3.5909374999999994
+Shubert-Piyavskii (L = 150): 0

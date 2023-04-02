@@ -43,3 +43,9 @@ x_min, iterations = fr_pr_conjugate_gradient(x0, epsilon)
 print("最小值点：", x_min)
 print("最小值：", f(x_min))
 print("迭代次数：", iterations)
+
+with open('result_1.txt','w') as file:
+    print("最小值点：", x_min,file=file)
+    print("最小值：", f(x_min),file=file)
+    print("迭代次数：", iterations,file=file)
+

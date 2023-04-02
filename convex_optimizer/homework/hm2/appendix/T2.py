@@ -105,3 +105,21 @@ print("Fibonacci Search:", fibonacci_search(f_b, a1, b1, delta_b))
 print("Bisection Search:", bisection_search(f_b, a1, b1, delta_b))
 print("Dichotomous Search:", dichotomous_search(f_b, a1, b1, delta_b))
 print("Shubert-Piyavskii (L = 150):", shubert_piyavskii(f_b, a1, b1, l=150,delta=delta_b))
+
+# 将上面打印结果保存到result_2.txt
+with open('result_2.txt', 'w') as f:
+    # Solve problem a
+    print("Problem a:", file=f)
+    print("Golden Section Search:", golden_section_search(f_a, a0, b0, delta_a), file=f)
+    print("Fibonacci Search:", fibonacci_search(f_a, a0, b0, delta_a), file=f)
+    print("Bisection Search:", bisection_search(f_a, a0, b0, delta_a), file=f)
+    print("Dichotomous Search:", dichotomous_search(f_a, a0, b0, delta_a), file=f)
+    print("Shubert-Piyavskii (L = 5):", shubert_piyavskii(f_a, a0, b0, l=5, delta=delta_a), file=f)
+
+    # Solve problem b
+    print("\nProblem b:", file=f)
+    print("Golden Section Search:", golden_section_search(f_b, a1, b1, delta_b), file=f)
+    print("Fibonacci Search:", fibonacci_search(f_b, a1, b1, delta_b), file=f)
+    print("Bisection Search:", bisection_search(f_b, a1, b1, delta_b), file=f)
+    print("Dichotomous Search:", dichotomous_search(f_b, a1, b1, delta_b), file=f)
+    print("Shubert-Piyavskii (L = 150):", shubert_piyavskii(f_b, a1, b1, l=150, delta=delta_b), file=f)
