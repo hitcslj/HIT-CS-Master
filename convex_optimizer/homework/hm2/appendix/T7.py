@@ -20,14 +20,14 @@ def exact_line_search(x, d):
 
 
 # 使用DFP方法求解
-def dfp(x0, H, max_iter=100, epoison=1e-6):
+def dfp(x0, H, max_iter=100, epsilon=1e-6):
     x = x0
     H = H
     k = 0
 
     while k < max_iter:
         g = gradient_f(x)  # 计算梯度
-        if np.linalg.norm(g) < epoison:  # 检查梯度是否满足停止条件
+        if np.linalg.norm(g) < epsilon:  # 检查梯度是否满足停止条件
             break
 
         d = -H.dot(g)  # 计算搜索方向
@@ -43,13 +43,13 @@ def dfp(x0, H, max_iter=100, epoison=1e-6):
         k += 1
     return x,k
 
-def bfgs(x0, H=np.exp(2), max_iter=10000, epoison=1e-6):
+def bfgs(x0, H=np.exp(2), max_iter=10000, epsilon=1e-6):
     x = x0
     k = 0
 
     while k < max_iter:
         g = gradient_f(x)  # 计算梯度
-        if np.linalg.norm(g) < epoison:  # 检查梯度是否满足停止条件
+        if np.linalg.norm(g) < epsilon:  # 检查梯度是否满足停止条件
             break
 
         d = -H.dot(g)  # 计算搜索方向
@@ -69,7 +69,7 @@ def bfgs(x0, H=np.exp(2), max_iter=10000, epoison=1e-6):
 
     return x, k
 
-def fr(x0, H=np.eye(2),max_iter=100, epoison=1e-6):
+def fr(x0, H=np.eye(2),max_iter=100, epsilon=1e-6):
     x = x0
     g = gradient_f(x)
     H = hessian(x)
@@ -77,7 +77,7 @@ def fr(x0, H=np.eye(2),max_iter=100, epoison=1e-6):
     k = 0
     while k < max_iter:
         g = gradient_f(x)  # 计算梯度
-        if np.linalg.norm(g) < epoison:  # 检查梯度是否满足停止条件
+        if np.linalg.norm(g) < epsilon:  # 检查梯度是否满足停止条件
             break
         alpha = -g.T.dot(d) / d.T.dot(H).dot(d)
         x = x + alpha * d
@@ -93,7 +93,7 @@ def fr(x0, H=np.eye(2),max_iter=100, epoison=1e-6):
 
 x0 = np.array([0, 0])
 H = np.eye(2)
-epoison = 1e-6
+epsilon = 1e-6
 
 methods = {
     "DFP": dfp,
@@ -105,7 +105,7 @@ methods = {
 # Find the minimum values of the functions using the L-BFGS-B method
 with open("result_7.txt", "w") as file:
     for method_name, method in methods.items():
-        x_min, iterations = method(x0, H, max_iter=10000, epoison=epoison)
+        x_min, iterations = method(x0, H, max_iter=10000, epsilon=epsilon)
         output = f"{method_name} - Minimum value: {f(x_min)} at {x_min} - iterations : {iterations}\n"
         print(output)
         print(output, file=file)

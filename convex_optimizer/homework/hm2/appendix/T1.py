@@ -14,14 +14,14 @@ def exact_line_search(x, d):
     alpha = -(d[0]-d[1]+4*x[0]*d[0]+2*x[1]*d[1]+2*d[0]*x[1]+2*d[1]*x[0]) / (4*d[0]**2+2*d[1]**2+4*d[0]*d[1])
     return alpha
 
-def prp_conjugate_gradient(x0, max_iter=100, epoison=1e-6):
+def prp_conjugate_gradient(x0, max_iter=100, epsilon=1e-6):
     x = x0
     g = gradient_f(x)
     d = -g
     k = 0
     while k < max_iter:
         g = gradient_f(x)  # 计算梯度
-        if np.linalg.norm(g) < epoison:  # 检查梯度是否满足停止条件
+        if np.linalg.norm(g) < epsilon:  # 检查梯度是否满足停止条件
             break
         alpha = exact_line_search(x, d)
         x = x + alpha * d
@@ -37,7 +37,7 @@ def prp_conjugate_gradient(x0, max_iter=100, epoison=1e-6):
 
 x0 = np.array([0, 0])
 epsilon = 1e-6
-x_min, iterations = prp_conjugate_gradient(x0, max_iter=100,epoison=epsilon)
+x_min, iterations = prp_conjugate_gradient(x0, max_iter=100,epsilon=epsilon)
 
 print("最小值点：", x_min)
 print("最小值：", f(x_min))

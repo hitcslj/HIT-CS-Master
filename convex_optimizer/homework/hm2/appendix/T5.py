@@ -14,14 +14,14 @@ def exact_line_search(x, d):
     return alpha
 
 # 使用DFP方法求解
-def dfp(x0, H, max_iter=100, epoison=1e-6):
+def dfp(x0, H, max_iter=100, epsilon=1e-6):
     x = x0
     H = H
     k = 0
 
     while k < max_iter:
         g = gradient_f(x)  # 计算梯度
-        if np.linalg.norm(g) < epoison:  # 检查梯度是否满足停止条件
+        if np.linalg.norm(g) < epsilon:  # 检查梯度是否满足停止条件
             break
 
         d = -H.dot(g)  # 计算搜索方向

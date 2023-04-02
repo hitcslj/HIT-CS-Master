@@ -13,13 +13,13 @@ def exact_line_search(x, d,epoison=1e-6):
     alpha = -(d[0] * x[0] + 4*d[1] * x[1] -2 *d[0]-4*d[1]) / (d[0]**2 + 4*d[1]**2+epoison)
     return alpha
 
-def bfgs(x0, H, max_iter=10000, epoison=1e-6):
+def bfgs(x0, H, max_iter=10000, epsilon=1e-6):
     x = x0
     k = 0
 
     while k < max_iter:
         g = gradient_f(x)  # 计算梯度
-        if np.linalg.norm(g) < epoison:  # 检查梯度是否满足停止条件
+        if np.linalg.norm(g) < epsilon:  # 检查梯度是否满足停止条件
             break
 
         d = -H.dot(g)  # 计算搜索方向

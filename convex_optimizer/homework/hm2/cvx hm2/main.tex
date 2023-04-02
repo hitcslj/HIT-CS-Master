@@ -1,0 +1,467 @@
+\documentclass{article}
+\usepackage{fontspec}
+\setmainfont{SimSun}
+\usepackage{student}
+\usepackage{hyperref}
+\usepackage{ctex}
+\usepackage{booktabs}
+\usepackage{amsmath} 
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage[linesnumbered, noend, ruled]{algorithm2e}
+% \usepackage{subcaption}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{graphicx}
+% \usepackage{float}
+\renewcommand*{\proofname}{Proof}
+\usepackage{pgf}
+% Metadata
+\date{\today}
+\setmodule{CS64001: Convex Optimization}
+\setterm{Spring, 2023}
+
+%-------------------------------%
+% Other details
+% TODO: Fill these
+%-------------------------------%
+\title{Assignment 2}
+\setmembername{刘建}  % Fill group member names
+\setmemberuid{22B903037}  % Fill group member uids (same order)
+
+%-------------------------------%
+% Add / Delete commands and packages
+% TODO: Add / Delete here as you need
+%-------------------------------%
+\usepackage{amsmath,amssymb,bm}
+
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\T}{\top}
+
+\newcommand{\expdist}[2]{%
+        \normalfont{\textsc{Exp}}(#1, #2)%
+    }
+\newcommand{\expparam}{\bm \lambda}
+\newcommand{\Expparam}{\bm \Lambda}
+\newcommand{\natparam}{\bm \eta}
+\newcommand{\Natparam}{\bm H}
+\newcommand{\sufstat}{\bm u}
+
+% \setlength{\parindent}{20pt}
+% Main document
+
+\begin{document}
+    % Add header
+    \header{\href{https://github.com/hitcslj/HIT-CS-Master/tree/main/convex_optimizer/homework/hm2}{all code can be found here: hitcslj/HIT-CS-Master}}
+    
+    \subsection*{T0}
+
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{lcr}
+        \toprule
+        function  & Minimum value  & Minimum point \\
+        \midrule
+        Ackley & 4.440892098500626e-16 & [0,0] \\
+        Booth & 0.0 & [1. 3.] \\
+        Branin & 0.3978873577300295 & [-3.1415928  12.27499991] \\
+        Flower &  0.0 & [0,0] \\
+        Michalewicz &  -1.6026068201970993 & [2.20290554 2.20290552]
+        \\
+        Rosenbrock Banana & 0.0 & [1. 1.] \\
+        Wheeler & -0.9999999999568931 & [0.99999408 1.5000058 ] \\
+        \bottomrule
+    \end{tabular}
+    \caption{尝试各个方法在 8 个测试函数上的性能表现（只尝试了七个），只需要在代码中体现即可）}
+    \end{table}
+    
+
+    \subsection*{T1}
+    
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{lcr}
+        \toprule
+        method  & Minimum value  & Minimum point & iterations \\
+        \midrule
+        共轭梯度法 & -1.25 & [-1.   1.5] & 2 \\
+        \bottomrule
+    \end{tabular}
+    \caption{用共轭梯度法求解问题}
+    \end{table}
+
+
+    \subsection*{T2}
+
+    分别使用黄金分割，斐波那契算法，二分法和Dichotomous解下列问题：
+    
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{lcrp{2cm}}
+        \toprule
+        method  &  Minimum point  \\
+        \midrule
+        Golden Section Search & 0.25735421375199785 \\
+        Fibonacci Searchh & 0.2647058823529412 \\
+        Bisection Search & 0.2647058823529412 \\
+        Dichotomous Search & 0.25394531249999996 \\
+        Shubert-Piyavskii (L = 5) & -0.0277632 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Problem a}
+    \end{table}
+
+
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{lcrp{2cm}}
+        \toprule
+        method  &  Minimum point  \\
+        \midrule
+        Golden Section Search & 3.608630593568614 \\
+        Fibonacci Searchh & 3.6140583554376664 \\
+        Bisection Search & 3.5888671875 \\
+        Dichotomous Search & 3.5909374999999994 \\
+        Shubert-Piyavskii (L = 150) &  0 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Problem b}
+    \end{table}
+ 
+
+    \subsection*{T3}
+    使用不精确的一维搜索算法Goldstein，Goldstein-Price,Wolfe-Powell方法解下列问题 $\min f(x+\lambda d)$：
+    \begin{align*}
+        f(x) = 100(x_2-x_1^2)^2+(1-x_1)^2, x_1 = (-1,1)^T, d=(1,1)^T 
+    \end{align*}
+
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{lcrp{2cm}}
+        \toprule
+        method  &  lambda  \\
+        \midrule
+        Goldstein & 0.9999995231628418 \\
+        Goldstein-Price & 0.00390625 \\
+        Wolfe-Powell & 0.00390625 \\
+        \bottomrule
+    \end{tabular}
+    \caption{使用不精确的一维搜索算法Goldstein，Goldstein-Price,Wolfe-Powell方法}
+    \end{table}
+
+
+    \subsection*{T4}
+    计算凸函数的次微分
+    (1) $f(x_1, x_2, x_3) = max(|x_1|, |x_2|, |x_3|)$, 在点$(0,0,0)$处. 
+        由次梯度定义$\partial f = {g | g^t(y-x) \le f(y)-f(x)} \forall y \in \mathbf{dom} f$,
+
+        \begin{align*}
+            f(\mathbf{x}) &\ge f(\mathbf{0})+ \mathbf{g^t} \mathbf{x} \\
+            \max \{ |\mathbf{x}| \} &\ge 0 + \mathbf{g^t} \mathbf{x}  \\
+            \max \{ |\mathbf{x}| \} &\ge  \mathbf{g^t} \mathbf{x} 
+        \end{align*}
+        
+        故有：$|| g||_1 \le \mathbf{1}$
+
+        注：无穷范数的对偶范数是1-范数.
+
+    (2) $f(x) = e^{|x|}$, 在$x=0$处\dots
+        
+        \begin{equation*}
+            f(x) \ge f(0) + gx \leftarrow
+            \begin{cases}
+                x>0 \quad \quad g < \frac{e^x -1 }{x} \quad s.t. g< \lim_{x \to 0^+}\frac{e^x -1 }{x}  = 1\\
+                x<0 \quad \quad g > \frac{e^{-x} -1 }{x} \quad s.t. g> \lim_{x \to 0^-}\frac{e^{-x} -1 }{x} = -1 \\
+            \end{cases} 
+        \end{equation*}
+
+        所以次梯度g = $[-1,1]$
+        
+    (3) $f(x_1, x_2) = max (x_1+x_2-1, x_1-x_2+1)$, 在点$(1,1)$处,
+        由subgradient basic calculus rules and pointwise maximum property可得：
+        \begin{gather*}
+            \partial f = conv \cup_{i \in I(x)} \partial f_i(x) \\
+            \partial f_1(x) = A_1 , \quad A_1 = (1, 1)^T \\
+            \partial f_2(x) = A_2 , \quad A_2 = (1, -1)^T \\
+        \end{gather*}
+
+    \subsection*{T5}
+        DFP方法求解问题：$\min 10*x_1^2 + x_2^2 $, $H^{(0) = I}, x^{(0)} = (0.1,0)^T$. 精确一维搜索. 
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{lcrp{2cm}}
+            \toprule
+            method  &  Minimum point & Minimum value & iterations  \\
+            \midrule
+            DFP & [-1.38777878e-17  0.00000000e+00] & 1.925929944387236e-33 & 2\\
+            \bottomrule
+        \end{tabular}
+        \caption{DFP方法求解问题}
+        \end{table}
+
+    \subsection*{T6}
+        使用BFGS求解问题 : $\min x_1^2 + 4x_2^2-4x_1 -8x_2$, $H^{(0) = I}, x^{(0)} = (0,0)^T$. 精确一维搜索. 
+
+        \begin{table}[h!]
+        \centering
+        \begin{tabular}{lcrp{2cm}}
+            \toprule
+            method  &  Minimum point & Minimum value & iterations  \\
+            \midrule
+            BFGS & [1.99999988 1.00000001] & -7.999999999999985 & 2\\
+            \bottomrule
+        \end{tabular}
+        \end{tabular}
+        \caption{BFGS方法求解问题}
+        \end{table}
+
+    \subsection*{Q7}
+        分别使用DFP，BFGS，FR conjugate 解优化问题， 并比较算法的优缺点. 
+        
+        分析：
+
+        DFP法和BFGS法都是拟牛顿法，主要是为了解决牛顿法中Hesse逆矩阵不可解的问题。可以验证的，DFP法和BFGS法提出的矫正矩阵能够得到
+        满足拟牛顿条件的矩阵。
+        
+        拟牛顿条件：
+        \begin{align*}
+            p^k &= x^{k+1}- x^{k} \\
+            q^k &= g^{k+1}- g^{k} \\
+            p^k &= H_{k+1}q^k \\ 
+        \end{align*}
+
+        DFP提出的矫正矩阵为：
+
+        \begin{equation*}
+            H_{k+1} = H_{k} + \frac{p^(k)p^{(k)T}}{p^(k)q^{(k)T}} - \frac{H_kq^{(k)}q^{(k)T H_k}}{q^{(k)T} H_k q^{(k)}}
+        \end{equation*}
+
+        可以验证的DFP法构造的$H_k$矩阵都是对称正定矩阵，故每次搜索方向均是函数下降方向。
+        在目标函数是二次函数$f(x) = \frac{1}{2}x^TAx+b^Tx+c$时，
+        可以证明DFP法构造的搜索方向是关于$A$的一组共轭方向，有限步迭代收敛至极值点。
+
+        和DFP法直接估计Hesse的逆矩阵不同，BFGS法的想法是先估计Hesse矩阵本身，然后经过变换，可以得到BFGS法的矫正公式:
+        \begin{equation*}
+            H_{k+1}^{BFGS} = H_{k} + (1+ \frac{q^{(k)T}H_kq^{(k)}}{p^{(k)T}q^{(k)}})\frac{p^{(k)}p^{(k)T}}{p^{(k)T}q^{(k)}}
+            - \frac{p^{(k)}q^{(k)T}H_k + H_kq^{(k)}p^{(k)T}}{p^{(k)T}q^{(k)}}
+        \end{equation*} 
+
+        实际计算经验表明BFGS法的数值稳定性更好。拟牛顿算法是\textbf{无约束优化问题}中最有效的一类算法，在实际计算中规避了二次导数的计算（用一阶导数近似），
+        当构造的$H_k$正定时，搜索方向都是下降方向，且具有二次终结性，对于更一般的情况，具有超线性的收敛速度。但是，拟牛顿法需要较大的存储空间，在求解大型
+        问题可能会遇到困难。
+
+        FR-conjugate法是一类共轭梯度法，实际是改造了最速下降法，对于目标函数是二次函数的情况，
+        在计算$x^{(k+1)}$出梯度方向后，并不直接将搜索方向$d_{k+1}$定为负梯度$-g_{k+1}$方向，而是利用了上次搜索方向$d_{k}$，使得$d_{k+1}, d_{k}$
+        是关于$A$的一组共轭方向。这样做的好处在于，可以利用共轭方向的性质，算法具有二次终结性,有限次迭代可收敛。
+
+        和拟牛顿法相比，共轭方向法的优点在于存储量较小, 在求解大型优化问题时占优势。 
+
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{lcrp{2cm}}
+                \toprule
+                method  &  Minimum point & Minimum value & iterations  \\
+                \midrule
+                DFP & [-1.   1.5] & -1.25 & 2 \\
+                BFGS & [-1.   1.5] & -1.25 & 2\\
+                FR & [-1.   1.5] & -1.25 & 2 \\
+                \bottomrule
+            \end{tabular}
+            \end{tabular}
+            \caption{DFP，BFGS，FR conjugate方法求解问题}
+            \end{table}
+    \subsection*{Q8}
+    \textbf{无约束优化问题求解基本思想：}
+
+    无约束优化问题的求解主要有两大类算法：
+    \begin{itemize}
+        \item  一类是利用导数信息的算法，包括最速下降法，牛顿法，共轭梯度法，拟牛顿法。
+    这类方法是利用梯度信息，来选取合适的搜索方向，搜索方向要要满足使得函数值下降的要求。
+        \item  另一类算法是不利用导数信息的直接优化方法，包括模式搜索，Rosenbrock法，单纯形搜索，Powell方法等，实际上是根据规则
+    在空间中挑选线性无关的搜索方向，自然地，这类方法对于求解变量不多的优化问题比较有效。
+    \end{itemize}
+    
+    一般而言，无约束优化问题的求解涉及两个关键的问题，一个是确定当前点的搜索方向，二是确定搜索步长。
+
+
+    \textbf{如何将非凸优化问题转化成凸优化问题：}
+
+    首先需要说明相比于非凸问题，凸问题的优势。
+    对于凸问题，局部最优解就是全局最优解（更准确的说法是严格凸函数），同时，非凸问题的困难在于在高维空间中，存在许多鞍点（梯度为零，但是
+    Hesse矩阵不定）。
+
+    回顾凸问题的定义，需要满足两个条件（1）问题的可行域是一个凸集（2）目标函数是可行域上的一个凸函数。
+
+    在非凸问题转化成凸问题的过程中可以从这两个方向入手：
+    \begin{itemize}
+        \item 修改目标函数，使其成为一个凸函数，这样就可以满足条件（1）。
+        \item 抛弃一些约束条件，或者对约束条件做松弛处理，使得新的可行域是凸集，同时包含原可行域的所有点。
+    \end{itemize}
+
+
+
+
+    
+
+\textbf{如何将有约束问题转化成无约束优化问题：}
+
+    可以将对于可行域的约束条件作为惩罚项加入到原目标函数中，比如常见的罚函数方法（内点法，外点法）；同时为了解决
+    罚函数方法中的缺陷，提出了增广拉格朗日方法。
+
+    无约束优化求解的基本思想：
+
+无约束优化问题是寻找一个解，使得目标函数值最小（或最大）。在无约束优化中，基本思想可以归纳为以下几点：
+
+梯度信息：在求解无约束优化问题时，通常会利用目标函数的一阶导数（梯度）或二阶导数（Hessian矩阵）来确定搜索方向。梯度信息提供了目标函数在当前位置下降最快的方向。
+
+一维搜索：在确定了搜索方向后，需要沿该方向进行一维搜索以确定步长。步长的选取可以是精确的，如通过求解最小化问题，也可以是近似的，如使用启发式规则。
+
+迭代更新：根据搜索方向和步长，更新解的位置。不断迭代，直到满足收敛条件，如迭代次数、解的变化范围、梯度范数等。
+
+收敛性能：选择合适的优化算法可以提高收敛速度和准确性。例如，二阶方法（如牛顿法、拟牛顿法）通常具有较快的收敛速度，但需要更多的计算资源。
+
+将非凸优化问题转化为凸优化问题：
+
+将非凸优化问题转化为凸优化问题并不总是可能的。然而，在某些情况下，可以采用以下方法：
+
+凸松弛：将非凸约束或目标函数替换为它们的凸上界或凸下界，从而得到一个凸问题。求解凸问题后，可以得到原问题的近似解。
+
+分段逼近：将非凸函数分段为凸子问题，然后在每个子区间内求解凸优化问题。通过合并子问题的解，可以得到原问题的近似解。
+
+逐次凸规划：使用凸优化技术逐次求解非凸问题。在每次迭代中，用一个凸函数逼近非凸目标函数，然后求解凸问题。将得到的解作为下一次迭代的初始点，直至满足收敛条件。
+
+将有约束问题转化为无约束问题：
+
+有约束优化问题可以通过以下方法转化为无约束优化问题：
+
+惩罚函数法：将约束条件转化为惩罚项，加到目标函数中。这样，违反约束条件时，目标函数值会变得很大。通过调整惩罚系数，可以使得有约束问题转化为无约束问题。
+
+拉格朗日乘数法：引入拉格朗日乘子，将约束条件与目标函数结合成一个拉格朗日函数。通过优化拉格朗日函数，可以将有约束问题转化为无约束问题。然后，可以使用无约束优化方法求解拉格朗日函数。
+
+投影梯度法：在每次迭代更新解的位置后，将解投影回可行域。这样，无约束优化过程始终保持在可行域内，最终得到有约束问题的解。
+
+障碍函数法（内点法）：将约束条件转化为障碍函数，加到目标函数中。障碍函数的值在可行域内为0，而在不可行域内为正无穷。通过调整障碍函数的参数，可以在可行域内求解无约束优化问题。
+
+序列二次规划（SQP）：将有约束问题转化为一系列无约束二次规划子问题。在每次迭代中，使用当前解和梯度信息构建一个二次规划子问题，然后使用无约束优化方法求解子问题。将子问题的解作为下一次迭代的初始点，直至满足收敛条件。
+
+通过这些方法，可以将有约束问题转化为无约束问题，从而利用无约束优化技术求解原问题。然而，需要注意的是，这些方法并不保证始终能找到全局最优解，特别是在非凸问题中。在实际应用中，需要根据问题的特点选择合适的方法。
+
+
+
+    
+    
+
+    \subsection*{Q9}
+    \textbf{总结最速下降法，牛顿法，修正牛顿法的统一公式描述：}
+
+    \begin{equation*}
+        x^{k+1} = x^{k} - \lambda_k d^{k}
+    \end{equation*}
+
+    其中，$\lambda_k$ 是每次迭代的步长，$d^{(k)}$ 是每次迭代的搜索方向。
+    对于上述方法：
+
+    \begin{itemize}
+        \item 最速下降法： 搜索方向是$-\nabla f(x^k)$,可以通过方向导数来证明负梯度是在$x^k$点局部下降最快的方向
+        （并非全局下降最快的方向）， 每次迭代步长可以通过一维搜索方法确定最优的$\lambda_k$。
+        \item 牛顿法： 搜索方向是$-\nabla^2 f(x^k)^{-1} \nabla f(x^k)$, 每次迭代步长为1。牛顿法的基本思想是$x^k$点附近用
+        二阶的泰勒展开，用二次函数的极值点近似目标函数的极值点，但是如果$x^k$不满足前提，搜索方向不能保证是下降方向。
+        \item 修正牛顿法：牛顿法存在的问题是Hesse的逆矩阵不一定可解，且迭代步长为定值。修正牛顿法的思想是（1）修正Hesse矩阵为
+        $B_k = \nabla^2f(x^k) + \epsilon I$，同时用一维搜索方法确定最优的$\lambda_k$。
+    \end{itemize}
+
+    \textbf{变尺度法的基本思想：}
+
+    和修正牛顿法不同，变尺度法通过秩2近似，直接求解Hesse矩阵的逆矩阵的近似矩阵$H_k$, 使得近似矩阵$H_k$满足拟牛顿条件
+    然后用一维搜索算法确定搜索步长。
+    \begin{align*}
+        p^k &= x^{k+1}- x^{k} \\
+        q^k &= g^{k+1}- g^{k} \\
+        p^k &= H_{k+1}q^k \\ 
+    \end{align*}
+
+    \subsection*{Q10}
+    随机梯度下降改良算法求解上述问题：
+    
+    选取Q6中的优化问题，选择用带有动量的梯度下降优化，优化结果如下图所示，可以看到相比于BFGS，在
+    这个问题上，随机梯度下降改良算法的收敛速度更快。
+
+
+
+    \subsection*{Q11}
+    一阶优化算法的加速算法思想（参考林宙晨老师讲义）。
+
+    paper: \url{https://zhouchenlin.github.io/Publications/2020-PIEEE-Review.pdf}
+
+    book: \url{https://link.springer.com/content/pdf/10.1007/978-981-15-2910-8.pdf}
+
+
+    主要可以从以下个方面考虑：
+    \begin{itemize}
+        \item 随机梯度：对于较大规模数据，可以通过随机选取一定量的样本数据计算梯度，达到减少计算量的目的。
+        \item 动量加速：考虑最速下降法在由于相邻两次的搜索方向正交，导致在最优点附近出现zig-zag现象。考虑用利用上一步的
+        梯度信息加速收敛。
+        \item Nesterov动量加速：考虑动量加速算法中，梯度变化滞后于函数变化，故需要预测下一时刻的梯度，来修正动量。
+    \end{itemize}
+
+
+    \subsection*{Q12}
+
+    思考共轭函数和对偶性的关系。
+
+    参考：\url{https://zhuanlan.zhihu.com/p/265522736}\\
+    \url{https://zhuanlan.zhihu.com/p/107483229}
+
+    对偶函数：任意适当函数$f$的对偶函数定义为
+    \begin{equation*}
+        f^*(y) = \sup_{x \in \mathbf{dom} f} \{ y^Tx - f(x)\}
+    \end{equation*}
+
+    根据凸函数的保凸运算， 可以知道共轭函数$f^*(y)$是凸函数。通过共轭函数的定义，容易得到Fenchel不等式即
+    \begin{equation*}
+        f(x) \ge y^Tx - f^*(y) = g(x,y)
+    \end{equation*}
+
+    在上式中，任意的y都能得到一个对$f(x)$下界的刻画。面对$f(x)$非凸的场景，可以通过将目标函数设置为
+    $f^{**}$, 即考虑原问题共轭的共轭，此时$f^{**}$是一个凸函数，求解该问题，可以得到原非凸问题最优解
+    的一个下界。
+
+    注：’共轭‘之名是指原函数和共轭函数之间的关系是相互的，对于凸问题$f$，其共轭函数的共轭即$f^*$的共轭是$f$。
+
+    共轭函数和拉格朗日对偶函数之间关系密切。考虑一个带约束的优化问题：
+
+    \begin{equation*}
+        \min f_0(x) \quad f: R^n \leftarrow R \quad \quad \text{s.t.} 
+        \begin{cases}
+            Ax \le b, \quad  g: R^m \leftarrow R^n\\
+            Cx=0, \quad  h: R^n \leftarrow R^l
+        \end{cases}
+    \end{equation*}  
+
+    首先可以写出原问题的拉格朗日对偶函数：
+
+    \begin{equation*}
+        g(u, v) = \inf_{x \in \mathbf{dom} f} \{ f_0(x) + u^T (Ax-b) + v^TCx\} 
+    \end{equation*}
+
+    可以将上式改写成下面的形式：
+
+    \begin{align*}
+        g(u,v) &= -b^Tu + \inf_x \{ f_0(x) + (A^Tu+C^Tv)x\} \\
+        &= -b^Tu - \sup_x \{ - (A^Tu+C^Tv)x - f_0(x)\} \\
+        &= -b^Tu - f^*\{ - (A^Tu+C^Tv)\} 
+    \end{align*}
+
+    
+
+
+
+
+
+
+\end{document}
