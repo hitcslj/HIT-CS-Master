@@ -15,7 +15,7 @@ PPT（demo演示）
 
 ## 思考
 
-对于入门深度学习，特别是深度学习，强烈推荐大家一个仓库，代码写的非常清晰，同时Bilibili有视频讲解
+对于入门深度学习，特别是计算机视觉，强烈推荐大家一个仓库，代码写的非常清晰，同时Bilibili有视频讲解
 
 github:https://github.com/WZMIAOMIAO/deep-learning-for-image-processing/
 
