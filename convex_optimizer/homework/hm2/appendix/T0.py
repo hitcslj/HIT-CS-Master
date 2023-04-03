@@ -131,6 +131,8 @@ with open("result_0.txt", "w") as f:
         bound = bounds[func_name]
         gradient = grad(func)
         result = minimize(func, initial_guess, method="BFGS", bounds=bound, jac=gradient, options={"maxiter": 10000, "disp": True})
-        output = f"{func_name} - Minimum value: {result.fun} at {result.x}\n"
+        x_min = np.round(result.x, 2)
+        y_min = np.round(result.fun, 2)
+        output = f"{func_name} - Minimum value: {y_min} at {x_min}\n"
         print(output)
         print(output, file=f)

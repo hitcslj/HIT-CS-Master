@@ -102,10 +102,12 @@ methods = {
 
 }
 
-# Find the minimum values of the functions using the L-BFGS-B method
+# Find the minimum values of the functions using methods
 with open("result_7.txt", "w") as file:
     for method_name, method in methods.items():
         x_min, iterations = method(x0, H, max_iter=10000, epsilon=epsilon)
-        output = f"{method_name} - Minimum value: {f(x_min)} at {x_min} - iterations : {iterations}\n"
+        x_min = np.round(x_min, 2)
+        y_min = np.round(f(x_min), 2)
+        output = f"{method_name} - Minimum value: {y_min} at {x_min} - iterations : {iterations}\n"
         print(output)
         print(output, file=file)

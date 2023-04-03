@@ -38,13 +38,15 @@ def prp_conjugate_gradient(x0, max_iter=100, epsilon=1e-6):
 x0 = np.array([0, 0])
 epsilon = 1e-6
 x_min, iterations = prp_conjugate_gradient(x0, max_iter=100,epsilon=epsilon)
+x_min = np.round(x_min, 2)
+y_min = round(f(x_min),2)
 
 print("最小值点：", x_min)
-print("最小值：", f(x_min))
+print("最小值：", y_min)
 print("迭代次数：", iterations)
 
 with open('result_1.txt','w') as file:
     print("最小值点：", x_min,file=file)
-    print("最小值：", f(x_min),file=file)
+    print("最小值：", y_min,file=file)
     print("迭代次数：", iterations,file=file)
 
