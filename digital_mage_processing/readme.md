@@ -12,7 +12,7 @@
 
 实验四由韩同学完成，已经验收。
 
-实验五用NIPS的workshop代替。链接在：https://github.com/hitcslj/Visual-Domain-Adaptation-Challenge
+实验五用NIPS的workshop代替(被清华大学的韩哥带飞了一波)。链接在：https://github.com/hitcslj/Visual-Domain-Adaptation-Challenge
 
 
 
