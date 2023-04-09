@@ -46,7 +46,7 @@ def render(time: ti.f32):
 def main():
     gui = ti.GUI("Mandelbrot set zoom", res=(width, height))
     for i in range(100000):
-        render(i * 0.03)
+        render(i * 0.1)
         gui.set_image(pixels)
         gui.show()
 
