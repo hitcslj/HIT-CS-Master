@@ -14,4 +14,4 @@
 
 生产力工作：
 
-- [x] chatGPT(放一个[科普视频链接](https://m.weibo.cn/status/4883616632407083?sourceType=weixin&from=10D3295010&wm=2468_1001&featurecode=newtitle&s_channel=4&s_trans=2215547003_4883616632407083&jumpfrom=weibocom#&video)以及chatGPT-academic的链接
+- [x] chatGPT(放一个[科普视频链接](https://m.weibo.cn/status/4883616632407083?sourceType=weixin&from=10D3295010&wm=2468_1001&featurecode=newtitle&s_channel=4&s_trans=2215547003_4883616632407083&jumpfrom=weibocom#&video)以及[chatGPT-academic的链接](https://mp.weixin.qq.com/s/zks-WnurWLEIktQEu6E5cA))
