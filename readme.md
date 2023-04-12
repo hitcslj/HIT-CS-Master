@@ -11,6 +11,6 @@
 * [ ] [凸优化](./convex_optimizer)
 * [ ] [模式识别](./pattern_recognition)
 * [ ] [深度学习技术](./deep_learning)
-* [ ] [计算机图形学](./computer_graph)
+* [x] [计算机图形学](./computer_graph)
 * [ ] [高级医学影像分析](./advanced_medical_imaging_analysis)
-* [ ] [学术写作和学术规范](./academic_writing_and_academic_norms)
+* [x] [学术写作和学术规范](./academic_writing_and_academic_norms)
