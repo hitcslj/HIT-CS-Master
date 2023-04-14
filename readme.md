@@ -8,7 +8,7 @@
 ## 2023年春季学期
 
 * [ ] [高级算法设计与分析](./algorithm)
-* [ ] [凸优化](./convex_optimizer)
+* [ ] [组合优化和凸优化](./convex_optimizer)
 * [ ] [模式识别](./pattern_recognition)
 * [ ] [深度学习技术](./deep_learning)
 * [x] [计算机图形学](./computer_graph)
