@@ -9,7 +9,7 @@
 
 * [ ] [高级算法设计与分析](./algorithm)
 * [ ] [组合优化和凸优化](./convex_optimizer)
-* [ ] [模式识别](./pattern_recognition)
+* [ ] [模式识别](./advanced_pattern_recognition)
 * [ ] [深度学习技术](./deep_learning)
 * [x] [计算机图形学](./computer_graph)
 * [ ] [高级医学影像分析](./advanced_medical_imaging_analysis)
