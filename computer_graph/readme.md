@@ -1,9 +1,10 @@
-## 计算机图形学
+# HIT-Computer-Graphics
 
-苏老师讲课讲的很好，这是一门选修课，最后分数就是由一次大作业决定。
+哈工大研究生课程: 计算机图形学 (Computer Graphics), [大作业](./homework) [课件](./slides)
 
-有认真写的学长，他们的作业会被苏老师收集到ppt里面。
+## 课程简介
 
-听说每次上完这门课，都有同学run到了浙大的CAD实验室。
+讲课老师：[苏小红](http://homepage.hit.edu.cn/suxiaohong?lang=zh)
 
+本门课课程最终提交一个大作业+演示视频即可。
 
