@@ -2,8 +2,12 @@
 
 哈工大研究生课程: 高级算法设计与分析 (Advanced algorithm design and analysis), [实验](./lab) [作业](./homework) [课件](./slides) [大作业](./report)
 
+## 课程简介
 > 注意事项：骆老师的这门课比较严，有查重。大家参考的时候，一定不能原封不动地抄袭。
 > 特别有些题目，我写的很水，甚至都是错的，要是错的一致，很可能被抓！！！
+
+讲课老师：[骆吉洲](http://homepage.hit.edu.cn/luojz?lang=zh)
+
 
 ## 实验部分
 
