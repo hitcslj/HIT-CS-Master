@@ -1,6 +1,6 @@
 # HIT-Algo
 
-哈工大研究生课程: 高级算法设计与分析 (Advanced algorithm design and analysis), [实验](./lab) [作业](./homework) [课件](./slides)[大作业](./report)
+哈工大研究生课程: 高级算法设计与分析 (Advanced algorithm design and analysis), [实验](./lab) [作业](./homework) [课件](./slides) [大作业](./report)
 
 > 注意事项：骆老师的这门课比较严，有查重。大家参考的时候，一定不能原封不动地抄袭。
 > 特别有些题目，我写的很水，甚至都是错的，要是错的一致，很可能被抓！！！
@@ -27,7 +27,7 @@
 * [ ] 第十章作业
 
 ## 大作业
-![img.png](大作业.png)
+![img.png](report/大作业.png)
 
 ## 分数
 
