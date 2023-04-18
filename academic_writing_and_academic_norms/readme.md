@@ -1,5 +1,12 @@
-## 学术写作与学术规范
+# HIT-academic_writing_and_academic_norms
 
+哈工大研究生课程: 学术写作和学术规范 (academic writing and academic norms), [作业要求](./documents) [作业](./homework)
+
+## 课程简介
+
+讲课老师：[苏小红](http://homepage.hit.edu.cn/suxiaohong?lang=zh)
+
+## 作业
 这门课需要看的视频有：
 
 - [x] MOOC上的SPOC课程，学术写作与学术规范（苏老师讲的）
@@ -8,6 +15,11 @@
 
 - [x] 小组讨论（类似组会的paperReading，做一个ppt分享点评） 
 - [x] 综述报告（可以偷懒翻译英文综述，也可以自己写）
+
+## 分数
+- 小组讨论：10
+- 综述报告：90
+- 期末考试：60
 
 
 ---
