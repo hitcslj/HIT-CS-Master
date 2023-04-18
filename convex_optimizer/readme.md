@@ -2,6 +2,10 @@
 
 哈工大研究生课程: 凸优化 (Convex-optimization), [实验](./lab) [作业](./homework) [课件](./slides) [大作业](./report)
 
+## 课程简介
+
+讲课老师：[刘绍辉](http://homepage.hit.edu.cn/liushaohui?lang=zh)
+
 ## 实验部分
 * [ ] 实验一（整理作业代码——无约束优化的无导数/一阶/二阶优化算法）
 * [ ] 实验二（复现顶会，顶会的coding+自己的改进）
