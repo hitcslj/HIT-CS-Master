@@ -28,7 +28,7 @@ https://irhiteducn-my.sharepoint.com/:f:/g/personal/car_ir_hit_edu_cn/Ej7G5tfuiN
 https://docs.qq.com/form/page/DVE9NcU50TWdkWUtS
 
 以上全部材料提交截止日期：2023年5月28日（星期日）。最终将根据报告的“选题、技术、工作量、结果、展示效果”等方面进行评分，并以百分制计入考试成绩。望周知！
-## 思考
+## 参考
 
 对于入门深度学习，特别是计算机视觉，强烈推荐大家一个仓库，代码写的非常清晰，同时Bilibili有视频讲解
 
