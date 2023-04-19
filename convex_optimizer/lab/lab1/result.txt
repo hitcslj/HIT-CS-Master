@@ -1,0 +1,12 @@
+DFP - Minimum value: -1.25 at [-1.   1.5] - iterations : 2
+
+BFGS - Minimum value: -1.25 at [-1.   1.5] - iterations : 2
+
+FR - Minimum value: -1.25 at [-1.   1.5] - iterations : 2
+
+Gradient Descent - Minimum value: -1.25 at [-1.   1.5] - iterations : 1844
+
+Newton - Minimum value: -1.25 at [-1.   1.5] - iterations : 1
+
+Nelder-Mead - Minimum value: -1.25 at [-1.   1.5] - iterations : 76
+
