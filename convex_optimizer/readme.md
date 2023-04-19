@@ -1,24 +1,21 @@
 # HIT-Convex-optimization
 
-哈工大研究生课程: 凸优化 (Convex-optimization), [实验](./lab) [作业](./homework) [课件](./slides) [大作业](./report)
+哈工大研究生课程: 凸优化 (Convex-optimization), [实验和报告](./lab) [作业](./homework) [课件](./slides)
 
 ## 课程简介
 
 讲课老师：[刘绍辉](http://homepage.hit.edu.cn/liushaohui?lang=zh)
 
-## 实验部分
+## 实验和报告部分
 * [ ] 实验一（整理作业代码——无约束优化的无导数/一阶/二阶优化算法）
 * [ ] 实验二（复现顶会，顶会的coding+自己的改进）
+* [ ] 阅读报告（复现顶会，顶会的paperReading）
 
 ## 作业部分
 
 * [x] 第一次作业（凸集/凸函数/简单的线性规划求解）
 * [x] 第二次作业（一维搜索，无约束凸优化方法）
 * [x] 第三次作业 (有约束最优化)
-
-## 阅读报告
-
-* [ ] 阅读报告（复现顶会，顶会的paperReading）
 
 ## 分数
 
