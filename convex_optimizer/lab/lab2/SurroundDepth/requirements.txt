@@ -1,0 +1,13 @@
+ConfigArgParse
+imageio
+numpy 
+nuscenes-devkit==1.1.9
+opencv-python
+Pillow
+pyquaternion
+scikit-image==0.19.1
+scikit-learn==1.0.2
+scipy
+torch==1.8.1
+torchvision==0.9.1
+tqdm

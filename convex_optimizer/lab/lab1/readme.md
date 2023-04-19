@@ -13,6 +13,6 @@
 方便起见，可以就着作业2的第7题，来实验一下。
 
 
-[x] 无导数（这个可以直接使用Nelder-Mead）
-[x] 一阶(FR和GD)
-[x] 二阶(Newton，DFP,BFGS)
+- [x] 无导数（这个可以直接使用Nelder-Mead）
+- [x] 一阶(FR和GD)
+- [x] 二阶(Newton，DFP,BFGS)

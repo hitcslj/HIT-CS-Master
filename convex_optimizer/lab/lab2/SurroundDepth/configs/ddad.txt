@@ -1,0 +1,18 @@
+dataset = ddad
+min_depth = 0.1
+max_depth = 200
+batch_size = 6
+num_epochs = 20
+eval_frequency = -1
+
+skip = True
+focal = True
+focal_scale = 715.0873
+use_fix_mask=True
+
+height = 384
+width = 640
+height_ori = 1216
+width_ori = 1936
+
+

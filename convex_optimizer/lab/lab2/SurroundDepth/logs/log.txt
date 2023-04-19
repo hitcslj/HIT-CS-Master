@@ -1,0 +1,58 @@
+loading model from folder weights/nusc_scale/
+Loading depth weights...
+Loading encoder weights...
+Training model named: test
+There are 20096 training items and 6019 validation items
+
+loading model from folder weights/nusc_scale/
+Loading depth weights...
+Loading encoder weights...
+Training model named: test
+There are 20096 training items and 6019 validation items
+
+median: 1.1027817726135254
+-> Evaluating 1
+scale-ambiguous evaluation:
+front
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.177  &   2.176  &   7.423  &   0.264  &   0.773  &   0.916  &   0.963  \\
+front_left
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.282  &   3.206  &   7.126  &   0.348  &   0.656  &   0.837  &   0.914  \\
+back_left
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.275  &   2.963  &   6.447  &   0.345  &   0.675  &   0.847  &   0.916  \\
+back
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.219  &   2.330  &   7.382  &   0.310  &   0.706  &   0.884  &   0.947  \\
+back_right
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.351  &   6.161  &   7.489  &   0.393  &   0.632  &   0.828  &   0.905  \\
+front_right
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.324  &   5.660  &   7.809  &   0.383  &   0.646  &   0.835  &   0.911  \\
+all
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.271  &   3.749  &   7.279  &   0.341  &   0.681  &   0.858  &   0.926  \\
+scale-aware evaluation:
+front
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.180  &   2.192  &   7.637  &   0.282  &   0.744  &   0.906  &   0.959  \\
+front_left
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.261  &   2.751  &   7.099  &   0.371  &   0.646  &   0.832  &   0.908  \\
+back_left
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.282  &   2.820  &   6.567  &   0.374  &   0.629  &   0.824  &   0.905  \\
+back
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.213  &   2.343  &   7.667  &   0.326  &   0.692  &   0.872  &   0.941  \\
+back_right
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.403  &   9.329  &   7.768  &   0.426  &   0.611  &   0.807  &   0.889  \\
+front_right
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.339  &   6.971  &   8.062  &   0.407  &   0.643  &   0.823  &   0.898  \\
+all
+ abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.280  &   4.401  &   7.467  &   0.364  &   0.661  &   0.844  &   0.917  \\
