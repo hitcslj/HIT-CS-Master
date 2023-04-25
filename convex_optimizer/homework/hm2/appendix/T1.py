@@ -29,7 +29,6 @@ def prp_conjugate_gradient(x0, max_iter=100, epsilon=1e-6):
         # 使用Polak-Ribiere方法更新beta
         beta = np.dot(g_new, g_new - g) / np.dot(g, g)
         d = -g_new + beta * d
-        g = g_new
         k += 1
 
     return x, k
