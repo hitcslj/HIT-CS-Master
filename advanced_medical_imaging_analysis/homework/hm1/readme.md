@@ -27,8 +27,10 @@ python main.py --algo 1d
 
 一维直方图
 ![一维直方图](./1D_Histogram.jpg)
+
 一维熵图
 ![一维熵图](./1D_Entropy_Curve.jpg)
+
 一维分割图
 ![一维分割图](./1D_Max_Entropy_Threshold.jpg)
 
