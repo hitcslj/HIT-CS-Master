@@ -25,13 +25,13 @@ pip install skimage
 python main.py --algo 1d
 ```
 
-一维直方图
+- 一维直方图
 ![一维直方图](./1D_Histogram.jpg)
 
-一维熵图
+- 一维熵图
 ![一维熵图](./1D_Entropy_Curve.jpg)
 
-一维分割图
+- 一维分割图
 ![一维分割图](./1D_Max_Entropy_Threshold.jpg)
 
 
@@ -41,13 +41,13 @@ python main.py --algo 1d
 python main.py --algo 2d
 ```
 
-二维直方图
+- 二维直方图
 ![二维直方图](./2D_Histogram.jpg)
 
-二维熵图
+- 二维熵图
 ![二维熵图](./2D_Entropy_Curve.jpg)
 
-二维分割图
+- 二维分割图
 ![二维分割图](./2D_Max_Entropy_Threshold.jpg)
 
 ### 结论
