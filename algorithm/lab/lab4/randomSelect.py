@@ -12,10 +12,9 @@ def lazy_select(S, k):
     n = len(S)
     while True:
         m = int(n**(3/4))
-        p = int(k/n)
         R = random.sample(S, k=m)
         R.sort()
-        x = p*m
+        x = int(k/n*m)
         gap = int(n**(1/2))
 
         l = max(x - gap, 0)
