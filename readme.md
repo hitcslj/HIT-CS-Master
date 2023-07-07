@@ -30,5 +30,5 @@
 
 > 如果大家觉得对你有帮助，欢迎一键Star
 
-## Star History
+### Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=hitcslj/HIT-CS-Master&type=Date)](https://star-history.com/#hitcslj/HIT-CS-Master&Date)
